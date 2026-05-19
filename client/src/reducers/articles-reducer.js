@@ -1,6 +1,7 @@
 import _ from 'lodash';
 
 import Reducer from 'reducers/reducer';
+import safeJSON from 'lib-app/safe-json';
 import SessionStore from 'lib-app/session-store';
 
 class ArticlesReducer extends Reducer {
@@ -42,16 +43,12 @@ class ArticlesReducer extends Reducer {
     }
 
     onInitArticles(state) {
-        let topics = SessionStore.getItem('topics');
-
-        if(topics) {
-            topics = JSON.parse(topics);
-        }
+        const topics = safeJSON.parse(SessionStore.getItem('topics'), null);
 
         return _.extend({}, state, {
             retrieved: !!topics,
             loading: false,
-            topics: topics
+            topics: topics || []
         });
     }
 }
