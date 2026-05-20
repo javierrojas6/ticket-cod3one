@@ -113,4 +113,16 @@ describe('sessionStore library', function () {
         expect(LocalStorageMock.removeItem).to.have.been.calledWith(root + '_rememberData-token');
         expect(LocalStorageMock.removeItem).to.have.been.calledWith(root + '_rememberData-expiration');
     });
+
+    it('should return fallbacks when stored json is invalid', function () {
+        LocalStorageMock.getItem = function (key) {
+            if (key === root + '_userData') return '{invalid';
+            if (key === root + '_departments') return '{invalid';
+            if (key === root + '_customFields') return '{invalid';
+        };
+
+        expect(sessionStore.getUserData()).to.equal(null);
+        expect(sessionStore.getDepartments()).to.deep.equal([]);
+        expect(sessionStore.getCustomFields()).to.deep.equal([]);
+    });
 });

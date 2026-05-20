@@ -1,5 +1,6 @@
 import LocalStorage from 'localStorage';
 import date from 'lib-app/date';
+import safeJSON from 'lib-app/safe-json';
 
 class SessionStore {
     constructor() {
@@ -41,15 +42,15 @@ class SessionStore {
     }
 
     getUserData() {
-        return JSON.parse(this.getItem('userData'));
+        return this.getParsedItem('userData');
     }
 
     getDepartments() {
-        return JSON.parse(this.getItem('departments'));
+        return this.getParsedItem('departments', []);
     }
 
     getCustomFields() {
-        return JSON.parse(this.getItem('customFields'));
+        return this.getParsedItem('customFields', []);
     }
 
     storeRememberData({token, userId, expiration, isStaff}) {
@@ -86,9 +87,9 @@ class SessionStore {
         return {
             language: this.getItem('language'),
             reCaptchaKey: this.getItem('reCaptchaKey'),
-            departments: this.getDepartments() || [],
-            allowedLanguages: JSON.parse(this.getItem('allowedLanguages')),
-            supportedLanguages: JSON.parse(this.getItem('supportedLanguages')),
+            departments: this.getDepartments(),
+            allowedLanguages: this.getParsedItem('allowedLanguages', []),
+            supportedLanguages: this.getParsedItem('supportedLanguages', []),
             layout: this.getItem('layout'),
             title: this.getItem('title'),
             registration: (this.getItem('registration') * 1),
@@ -96,7 +97,7 @@ class SessionStore {
             'allow-attachments': (this.getItem('allow-attachments') * 1),
             'maintenance-mode': (this.getItem('maintenance-mode') * 1),
             'max-size': this.getItem('max-size'),
-            'tags': JSON.parse(this.getItem('tags')),
+            'tags': this.getParsedItem('tags', []),
             'default-is-locked': this.getItem('default-is-locked'),
             'default-department-id':  this.getItem('default-department-id')
             
@@ -133,8 +134,12 @@ class SessionStore {
         return this.storage.getItem(root + '_' + key);
     }
 
+    getParsedItem(key, fallback = null) {
+        return safeJSON.parse(this.getItem(key), fallback);
+    }
+
     setItem(key, value) {
-        return this.storage.setItem(root + '_' + key, (value !== undefined) ? value : '');
+        return this.storage.setItem(root + '_' + key, (value === undefined) ? '' : value);
     }
 
     removeItem(key) {
