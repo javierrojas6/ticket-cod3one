@@ -10,3 +10,6 @@ server/.fakemail
 server/apidoc
 dist/
 .env
+.nyc_*
+coverage/*
+build/*

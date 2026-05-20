@@ -7,7 +7,11 @@ global.document = jsdom('<html><body></body></html>', {
 });
 global.window = document.defaultView;
 global.Node = global.window.Node;
-global.navigator = global.window.navigator;
+Object.defineProperty(global, 'navigator', {
+    value: global.window.navigator,
+    configurable: true,
+    writable: true
+});
 global.React = require('react');
 global.ReactDOM = require('react-dom');
 global.chai = require('chai');
@@ -36,6 +40,10 @@ global.reRenderIntoDocument = (function () {
 global.ReduxMock = {
     connect: stub().returns(stub().returnsArg(0))
 };
+global.opensupports_version = 'test';
+global.root = 'http://localhost';
+global.apiRoot = 'http://localhost/api';
+global.showLogs = false;
 global.globalIndexPath = '';
 
 Array.prototype.swap = function (x,y) {

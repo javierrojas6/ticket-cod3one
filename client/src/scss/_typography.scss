@@ -2,25 +2,37 @@ p {
   margin-bottom: 1em;
 }
 
+%heading-large {
+  font-size: $font-size--lg;
+  font-weight: bold;
+  line-height: $half-space * 3 / 2;
+}
+
+%heading-medium {
+  font-size: $font-size--md;
+  font-weight: normal;
+  line-height: $half-space;
+}
+
+%heading-small {
+  font-size: $font-size--sm;
+  font-weight: bold;
+  line-height: $half-space * 2 / 3;
+}
+
 .heading {
   margin-bottom: 0.618em;
 
   &.-large {
-    font-size: $font-size--lg;
-    font-weight: bold;
-    line-height: $half-space * 3 / 2;
+    @extend %heading-large;
   }
 
   &.-medium {
-    font-size: $font-size--md;
-    font-weight: normal;
-    line-height: $half-space;
+    @extend %heading-medium;
   }
 
   &.-small {
-    font-size: $font-size--sm;
-    font-weight: bold;
-    line-height: $half-space * 2 / 3;
+    @extend %heading-small;
   }
 
   &.-smallest {
@@ -30,13 +42,13 @@ p {
 }
 
 h1 {
-  @extend .heading.-large;
+  @extend %heading-large;
 }
 
 h2 {
-  @extend .heading.-medium;
+  @extend %heading-medium;
 }
 
 h3 {
-  @extend .heading.-small;
+  @extend %heading-small;
 }

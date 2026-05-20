@@ -42,6 +42,7 @@ class StaffEditor extends React.Component {
     };
 
     state = {
+        statsRenderer: null,
         email: this.props.email,
         level: this.props.level - 1,
         message: null,
@@ -68,6 +69,7 @@ class StaffEditor extends React.Component {
     };
 
     componentDidMount() {
+        this.loadStatsRenderer();
         this.retrieveStaffMembers();
         this.retrieveTicketsAssigned(INITIAL_API_VALUE);
         statsUtils.retrieveStats({
@@ -77,6 +79,14 @@ class StaffEditor extends React.Component {
                 ticketData: data,
                 loadingStats: false
             });
+        }).catch((error) => {
+            if (showLogs) console.error('ERROR: ', error);
+        });
+    }
+
+    loadStatsRenderer() {
+        import('lib-app/stats-renderer').then(({default: statsRenderer}) => {
+            this.setState({statsRenderer});
         }).catch((error) => {
             if (showLogs) console.error('ERROR: ', error);
         });
@@ -309,14 +319,14 @@ class StaffEditor extends React.Component {
     }
 
     renderStaffStats() {
-        const { loadingStats, ticketData } = this.state;
+        const { loadingStats, statsRenderer, ticketData } = this.state;
 
         return (
             <div className="admin-panel-stats">
                 {
-                    loadingStats ?
+                    (loadingStats || !statsRenderer) ?
                         <Loading className="admin-panel-stats__loading" backgrounded size="large" /> :
-                        statsUtils.renderStatistics({showStatCards: true, showStatsByHours: true, ticketData})
+                        statsRenderer.renderStatistics({showStatCards: true, showStatsByHours: true, ticketData})
                 }
             </div>
         )

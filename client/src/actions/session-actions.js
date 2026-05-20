@@ -128,7 +128,7 @@ export default {
                     } else {
                         reject(result);
                     }
-                });
+                }).catch(reject);
             })
         }
     }

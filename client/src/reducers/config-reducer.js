@@ -9,6 +9,7 @@ class ConfigReducer extends Reducer {
         return {
             language: sessionStore.getItem('language'),
             initDone: false,
+            initError: null,
             installedDone: false,
             installed: false
         };
@@ -18,8 +19,11 @@ class ConfigReducer extends Reducer {
         return {
             'CHANGE_LANGUAGE': this.onLanguageChange,
             'INIT_CONFIGS_FULFILLED': this.onInitConfigs,
+            'INIT_CONFIGS_REJECTED': this.onInitConfigsRejected,
             'CHECK_INSTALLATION_FULFILLED': this.onInstallationChecked,
+            'CHECK_INSTALLATION_REJECTED': this.onInstallationCheckRejected,
             'UPDATE_DATA_FULFILLED': this.onInitConfigs,
+            'UPDATE_DATA_REJECTED': this.onInitConfigsRejected,
             'UPDATE_USER_SYSTEM_SETTINGS': this.onUserSystemSettingsChange
         };
     }
@@ -50,8 +54,16 @@ class ConfigReducer extends Reducer {
             'maintenance-mode': !!(payload.data['maintenance-mode']* 1),
             departments: payload.data.departments && payload.data.departments.map(department => _.extend({}, department, {private: department.private * 1})),
             initDone: true,
+            initError: null,
             'default-department-id': payload.data['default-department-id'],
             'default-is-locked': payload.data['default-is-locked'],
+        });
+    }
+
+    onInitConfigsRejected(state, payload) {
+        return _.extend({}, state, {
+            initDone: true,
+            initError: payload && payload.message ? payload.message : 'Unable to load application settings.'
         });
     }
 
@@ -66,6 +78,13 @@ class ConfigReducer extends Reducer {
         return _.extend({}, state, {
             installedDone: true,
             installed: payload.data
+        });
+    }
+
+    onInstallationCheckRejected(state) {
+        return _.extend({}, state, {
+            installedDone: true,
+            installed: state.installed
         });
     }
 }

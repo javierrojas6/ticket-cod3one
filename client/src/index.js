@@ -31,8 +31,39 @@ if (process.env.FIXTURES) {
     require('lib-app/fixtures-loader');
 }
 
+const StartupError = ({message}) => (
+    <div className="startup-error">
+        <h1>OpenSupports could not reach the API</h1>
+        <p>{message || 'Unable to load the initial application data.'}</p>
+        <p>Check the backend status or update the frontend endpoint configuration.</p>
+        <p>Current API root: {apiRoot}</p>
+    </div>
+);
+
+const swallowStartupError = error => {
+    if (showLogs) {
+        console.warn('Startup request failed', error);
+    }
+
+    return error;
+};
+
+const dispatchStartupAction = action => {
+    const dispatchResult = store.dispatch(action);
+
+    if (dispatchResult && typeof dispatchResult.catch === 'function') {
+        dispatchResult.catch(swallowStartupError);
+    }
+
+    return dispatchResult;
+};
+
 let renderApplication = function () {
-    render(<Provider store={store}>{routes}</Provider>, document.getElementById('app'));
+    const application = store.getState().config.initError
+        ? <StartupError message={store.getState().config.initError} />
+        : <Provider store={store}>{routes}</Provider>;
+
+    render(application, document.getElementById('app'));
 };
 window.store = store;
 
@@ -50,6 +81,6 @@ history.listen(() => {
     updateSearchTicketsFromURL();
 });
 
-store.dispatch(ConfigActions.checkInstallation());
-store.dispatch(ConfigActions.init());
-store.dispatch(SessionActions.checkSession());
+dispatchStartupAction(ConfigActions.checkInstallation());
+dispatchStartupAction(ConfigActions.init());
+dispatchStartupAction(SessionActions.checkSession());

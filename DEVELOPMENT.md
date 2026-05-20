@@ -10,16 +10,21 @@ Here is a guide of how to set up the development environment in OpenSupports.
 1. Update: `sudo apt update`
 2. Clone this repo: `git clone https://github.com/opensupports/opensupports.git`
 3. Install `nvm`: https://github.com/nvm-sh/nvm
-4. Use node version 11.15.0: `nvm install 11` followed by `nvm use 11`
+4. Use Node.js 24 or newer: `nvm install 24` followed by `nvm use 24`
 5. Go to client: `cd opensupports/client`
 6. Install dependencies: `npm install`
-7. Rebuild node-sass: `npm rebuild node-sass`
-8. Run: `npm start` (PHP server api it must be running at :8080)
-10. Go to the main app: `http://localhost:3000/app`
+7. Run: `npm start` (PHP server api it must be running at :8080)
+10. Go to the main app: `http://localhost:3002/app`
 11. Your browser will automatically be opened and directed to the browser-sync proxy address.
 12. Use `npm start-fixtures` to enable fixtures and not require php server to be running.
 
-OpenSupport uses by default the port 3000, but this port could already be used. If this is the case, you can modify this in the file: `client/webpack.config.js`.
+OpenSupport uses `3002` by default for the webpack dev server so it does not collide with common local tools already using `3000` or `3001`. If you need a different port, set `OS_DEV_SERVER_PORT` in `client/.env`.
+
+You can also create `client/.env` to point the frontend to another endpoint without editing source files. The build/dev server reads these variables automatically:
+
+- `OS_API_ROOT=https://remote.example.com/api` makes the frontend call that remote API directly.
+- `OS_API_ROOT=/api` together with `OS_DEV_PROXY_TARGET=https://remote.example.com/api` keeps the browser on the local frontend and proxies API calls to a remote backend, which is useful to avoid CORS problems during development.
+- `OS_CLIENT_ROOT`, `OS_GLOBAL_INDEX_PATH`, `OS_SHOW_LOGS`, `OS_DEV_SERVER_HOST`, and `OS_DEV_SERVER_PORT` are also available. See `client/.env.example` for a complete example.
 
 ##### Production Task
 

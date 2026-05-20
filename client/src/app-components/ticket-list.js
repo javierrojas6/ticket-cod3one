@@ -33,6 +33,7 @@ class TicketList extends React.Component {
         closedTicketsShown: React.PropTypes.bool,
         onClosedTicketsShownChange: React.PropTypes.func,
         onDepartmentChange: React.PropTypes.func,
+        pageSize: React.PropTypes.number,
         showPageSizeDropdown: React.PropTypes.bool
     };
 
@@ -44,6 +45,7 @@ class TicketList extends React.Component {
         ticketPath: '/dashboard/ticket/',
         type: 'primary',
         closedTicketsShown: false,
+        pageSize: 10,
         showPageSizeDropdown: true
     };
 
@@ -148,13 +150,13 @@ class TicketList extends React.Component {
     }
 
     getTableProps() {
-        const { loading, page, pages, onPageChange } = this.props;
+        const { loading, page, pages, onPageChange, pageSize } = this.props;
 
         return {
             loading,
             headers: this.getTableHeaders(),
             rows: this.getTableRows(),
-            pageSize: this.state.tickets,
+            pageSize,
             page,
             pages,
             onPageChange

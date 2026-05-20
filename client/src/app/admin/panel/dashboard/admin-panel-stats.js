@@ -17,6 +17,7 @@ import Button from 'core-components/button';
 class AdminPanelStats extends React.Component {
 
     state = {
+        statsRenderer: null,
         loading: true,
         rawForm: {
             period: 0,
@@ -28,6 +29,7 @@ class AdminPanelStats extends React.Component {
     };
 
     componentDidMount() {
+        this.loadStatsRenderer();
         statsUtils.retrieveStats({
             rawForm: this.getFormWithDateRange(this.state.rawForm),
             tags: this.props.tags
@@ -38,8 +40,16 @@ class AdminPanelStats extends React.Component {
         });
     }
 
+    loadStatsRenderer() {
+        import('lib-app/stats-renderer').then(({default: statsRenderer}) => {
+            this.setState({statsRenderer});
+        }).catch((error) => {
+            if (showLogs) console.error('ERROR: ', error);
+        });
+    }
+
     render() {
-        const { loading, rawForm, ticketData } = this.state;
+        const { loading, rawForm, statsRenderer, ticketData } = this.state;
 
         return (
             <div className="admin-panel-stats">
@@ -79,9 +89,9 @@ class AdminPanelStats extends React.Component {
                     </div>
                 </div>
                 {
-                    loading ?
+                    (loading || !statsRenderer) ?
                         <div className="admin-panel-stats__loading"><Loading backgrounded size="large" /></div> :
-                        statsUtils.renderStatistics({showStatCards: true, showStatsByHours: true, showStatsByDays: true, ticketData})
+                        statsRenderer.renderStatistics({showStatCards: true, showStatsByHours: true, showStatsByDays: true, ticketData})
                 }
             </div>
         )

@@ -1,13 +1,44 @@
 import React from 'react';
 import classNames from 'classnames';
-import ReactQuill, { Quill } from 'react-quill';
-import ImageResize from 'quill-image-resize-module-react';
-import MagicUrl from 'quill-magic-url';
 import {isIE} from 'lib-core/navigator';
 import Base64ImageParser from 'lib-core/base64-image-parser';
 
-Quill.register('modules/ImageResize', ImageResize);
-Quill.register('modules/magicUrl', MagicUrl)
+let ReactQuillComponent = null;
+let QuillInstance = null;
+let quillLoader = null;
+let quillModulesRegistered = false;
+
+const loadQuillEditor = () => {
+    if (ReactQuillComponent && QuillInstance) {
+        return Promise.resolve({ReactQuillComponent, QuillInstance});
+    }
+
+    if (!quillLoader) {
+        quillLoader = Promise.all([
+            import('react-quill'),
+            import('quill-image-resize-module-react'),
+            import('quill-magic-url')
+        ]).then(([reactQuillModule, imageResizeModule, magicUrlModule]) => {
+            const loadedReactQuill = reactQuillModule.default || reactQuillModule;
+            const loadedQuill = reactQuillModule.Quill || loadedReactQuill.Quill;
+            const imageResize = imageResizeModule.default || imageResizeModule;
+            const magicUrl = magicUrlModule.default || magicUrlModule;
+
+            if (!quillModulesRegistered) {
+                loadedQuill.register('modules/ImageResize', imageResize);
+                loadedQuill.register('modules/magicUrl', magicUrl);
+                quillModulesRegistered = true;
+            }
+
+            ReactQuillComponent = loadedReactQuill;
+            QuillInstance = loadedQuill;
+
+            return {ReactQuillComponent, QuillInstance};
+        });
+    }
+
+    return quillLoader;
+};
 
 class TextEditor extends React.Component {
     static propTypes = {
@@ -47,19 +78,38 @@ class TextEditor extends React.Component {
 
     state = {
         value: this.props.value,
-        focused: false
+        focused: false,
+        quillReady: isIE()
     };
+
+    componentDidMount() {
+        if (!isIE()) {
+            this.loadQuillEditor();
+        }
+    }
+
+    componentWillUnmount() {
+        this.unmounted = true;
+    }
+
+    loadQuillEditor() {
+        return loadQuillEditor().then(() => {
+            if (!this.unmounted) {
+                this.setState({quillReady: true});
+            }
+        });
+    }
 
     render() {
         return (
             <div className={this.getClass()} onPaste={this.onPaste.bind(this)}>
-                {isIE() ? this.renderTextArea() : this.renderQuill()}
+                {(isIE() || !this.state.quillReady) ? this.renderTextArea() : this.renderQuill()}
             </div>
         );
     }
 
     renderQuill() {
-        return <ReactQuill {...this.getEditorProps()} />
+        return <ReactQuillComponent {...this.getEditorProps()} />
     }
 
     renderTextArea() {
@@ -113,7 +163,7 @@ class TextEditor extends React.Component {
                     (this.props.allowImages) ? ['link', 'image'] : ['link']
                 ],
             },
-            ImageResize: {parchment: Quill.import('parchment')},
+            ImageResize: {parchment: QuillInstance.import('parchment')},
             magicUrl: true
         };
     }

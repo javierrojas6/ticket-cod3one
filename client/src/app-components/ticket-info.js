@@ -1,9 +1,18 @@
 import React from 'react';
 import _ from 'lodash';
-import htmlToText from 'html-to-text';
 
 import i18n from 'lib-app/i18n';
 import Icon from 'core-components/icon';
+
+const htmlToText = html => {
+    if (!html) {
+        return '';
+    }
+
+    const element = document.createElement('div');
+    element.innerHTML = html;
+    return element.textContent || element.innerText || '';
+};
 
 class TicketInfo extends React.Component {
     static propTypes = {
@@ -20,7 +29,7 @@ class TicketInfo extends React.Component {
                     </span>
                 </div>
                 <div className="ticket-info__description">
-                    {htmlToText.fromString(this.props.ticket.content)}
+                    {htmlToText(this.props.ticket.content)}
                 </div>
 
                 <div className="ticket-info__author">

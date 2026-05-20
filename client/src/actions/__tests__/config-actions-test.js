@@ -4,8 +4,14 @@ const APICallMock = {
 };
 
 const ConfigActions = requireUnit('actions/config-actions', {
-    'lib-app/api-call': APICallMock,
-    'lib-app/session-store': sessionStoreMock
+    'lib-app/api-call': {
+        __esModule: true,
+        default: APICallMock
+    },
+    'lib-app/session-store': {
+        __esModule: true,
+        default: sessionStoreMock
+    }
 });
 
 describe('Config Actions,', function () {
