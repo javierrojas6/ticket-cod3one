@@ -21,6 +21,7 @@ class MailSender {
         $this->mailOptions['smtp-host'] = $host;
         $this->mailOptions['smtp-user'] = $user;
         $this->mailOptions['smtp-pass'] = $pass;
+        $this->mailerInstance = null;
     }
 
     public function setTemplate($type, $config) {
@@ -73,6 +74,8 @@ class MailSender {
                 $this->mailerInstance->Password = $this->mailOptions['smtp-pass'];
             }
             $this->mailerInstance->Timeout = 10;
+            $this->mailerInstance->SMTPSecure = 'ssl';
+            $this->mailerInstance->Port = 2465;
             $this->mailerInstance->SMTPOptions = [
                 'ssl' => [
                     'verify_peer' => false,

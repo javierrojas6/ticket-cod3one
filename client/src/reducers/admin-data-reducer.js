@@ -1,6 +1,7 @@
 import _ from 'lodash';
 
 import Reducer from 'reducers/reducer';
+import safeJSON from 'lib-app/safe-json';
 import sessionStore from 'lib-app/session-store';
 
 class AdminDataReducer extends Reducer {
@@ -28,7 +29,7 @@ class AdminDataReducer extends Reducer {
             allTicketsLoaded: false,
             allTicketsError: false,
 
-            staffMembers: JSON.parse(sessionStore.getItem('staffMembers')) || [],
+            staffMembers: safeJSON.parse(sessionStore.getItem('staffMembers'), []),
             staffMembersLoaded: false,
             staffMembersError: false,
         };
