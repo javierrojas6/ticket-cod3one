@@ -1,40 +1,82 @@
-@import '../../scss/vars';
+@import "../../scss/vars";
 
 .admin-login-page {
-    display: flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  min-height: calc(100vh - 80px);
+  width: 100%;
+  padding: $ui-layout-auth-page-padding;
+
+  &__container {
+    width: 100%;
+    max-width: 460px;
+    min-height: 620px;
+  }
+
+  &__content {
     margin: 0 auto;
-    width: 446px;
-    
+    padding: 30px;
+    width: 100%;
+    text-align: center;
+  }
+
+  &__image {
+    width: min(100%, 280px);
+    margin: 0 auto 26px;
+  }
+
+  &__login-form-container {
+    margin: 0 auto;
+    display: block;
+    width: 100%;
+
+    &__login-form__fields {
+      padding: 6px 0 2px;
+    }
+
+    &__login-form__submit-button {
+      margin-top: 10px;
+    }
+  }
+
+  &__error {
+    margin-top: 22px;
+    text-align: left;
+  }
+
+  &__message {
+    margin-top: 18px;
+  }
+
+  &__captcha {
+    margin: 10px auto 20px;
+    height: 78px;
+    width: 304px;
+  }
+
+  .login-widget__forgot-password {
+    margin-top: 18px;
+  }
+
+  @media screen and (max-width: 640px) {
+    min-height: auto;
+    padding: $ui-layout-auth-page-padding-mobile;
+
     &__container {
-        height: 361px;
+      min-height: 0;
     }
 
     &__content {
-        margin: 0 auto;
-        padding: 40px;
+      padding: $ui-space-inset-xl;
     }
 
-    &__image {
-        width: 365px;
-        margin-bottom: 30px;
-    }
-
-    &__login-form-container {
-        margin: 0 auto;
-        display: inline-block;
-
-        &__login-form__fields {
-            padding: 10px 0;
-        }
-    }
-
-    &__error {
-        margin-top: 30px;
-    }
-    
     &__captcha {
-        margin: 10px auto 20px;
-        height: 78px;
-        width: 304px;
+      width: 100%;
+      transform: scale(0.92);
+      transform-origin: center top;
+      margin-bottom: 6px;
     }
+  }
 }

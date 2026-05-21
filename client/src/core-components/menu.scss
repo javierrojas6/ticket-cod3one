@@ -1,204 +1,221 @@
 @import "../scss/vars";
 
-$transition: background-color 0.3s ease, color 0.3s ease;
+$transition: $ui-transition-interactive;
 
 .menu {
+  &__list {
+    background-color: $ui-color-surface-soft;
+    color: $ui-color-text-muted;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    cursor: pointer;
+  }
 
-    &__list {
-        background-color: white;
-        color: $dark-grey;
-        margin: 0;
-        padding: 0;
-        list-style-type: none;
-        cursor: pointer;
+  &__list-item {
+    padding: $ui-space-inset-sm;
+    transition: $transition;
+
+    &_selected,
+    &:hover {
+      background-color: $ui-color-hover-accent;
+      color: $ui-color-text-primary;
+    }
+  }
+
+  &__icon {
+    margin-right: 8px;
+    margin-bottom: 2px;
+  }
+
+  &_secondary {
+    border-radius: $ui-radius-xl;
+    overflow: hidden;
+
+    .menu__list-item_selected,
+    .menu__list-item:hover {
+      background: $ui-gradient-info-strip;
     }
 
-    &__list-item {
-        padding: 8px;
-        transition: $transition;
-
-        &_selected,
-        &:hover {
-            background-color: $primary-red;
-            color: white;
-        }
+    .menu__header {
+      padding: 16px 18px 14px;
+      background: $ui-gradient-surface-strong;
+      color: $ui-color-text-primary;
+      font-size: $ui-font-size-title;
+      border-bottom: 1px solid $ui-color-border-strong;
+      border-top-right-radius: $ui-radius-xl;
+      border-top-left-radius: $ui-radius-xl;
     }
 
-    &__icon {
-        margin-right: 8px;
-        margin-bottom: 2px;
+    .menu__list {
+      background: $ui-gradient-surface;
     }
 
-    &_secondary {
-        .menu__list-item_selected,
-        .menu__list-item:hover {
-            background-color: $secondary-blue;
-        }
+    .menu__list-item {
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-top: 1px solid $ui-color-border-soft;
+    }
+  }
 
-        .menu__header {
-            padding: 8px;
-            background-color: $primary-blue;
-            color: white;
-            font-size: 16px;
-            border-top-right-radius: 4px;
-            border-top-left-radius: 4px;
-        }
+  &_navigation {
+    text-align: center;
+    background-color: transparent;
+
+    .menu__list {
+      background-color: transparent;
+      display: inline-block;
     }
 
-    &_navigation {
-        text-align: center;
-        background-color: transparent;
+    .menu__list-item {
+      background-color: $ui-color-text-primary;
+      cursor: pointer;
+      display: inline-block;
+      padding: 8px;
 
-        .menu__list {
-            background-color: transparent;
-            display: inline-block;
-        }
+      &:first-child {
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+      }
 
-        .menu__list-item {
-            background-color: white;
-            cursor: pointer;
-            display: inline-block;
-            padding: 8px;
+      &:last-child {
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+      }
 
-            &:first-child {
-                border-top-left-radius: 4px;
-                border-bottom-left-radius: 4px;
-            }
-
-            &:last-child {
-                border-top-right-radius: 4px;
-                border-bottom-right-radius: 4px;
-            }
-
-            &:focus {
-                outline: none;
-            }
-        }
-
-        .menu__list-item_selected {
-            background-color: $grey;
-            color: $primary-blue;
-        }
-
-        .menu__list-item:hover {
-            color: $primary-blue;
-        }
+      &:focus {
+        outline: none;
+      }
     }
 
-    &_horizontal {
-        text-align: left;
-
-        .menu__list {
-            background-color: transparent;
-            font-size: $font-size--md;
-        }
-
-        .menu__icon {
-            display: block;
-            margin-right: 0;
-            margin-bottom: 20px;
-            margin-top: 20px;
-            font-size: $font-size--xl;
-        }
-
-        .menu__list-item {
-            text-align: center;
-            background-color: white;
-            color: $primary-black;
-            cursor: pointer;
-            display: inline-block;
-            height: 120px;
-            width: 16.6667%;
-
-            @media (max-width: 667px) {
-                width: 33.3333%;
-            }
-        }
-
-        .menu__list-item_selected {
-            background-color: $secondary-blue;
-            color: white;
-        }
-
-        .menu__list-item:hover,
-        .menu__list-item:focus {
-            color: $dark-grey;
-            outline: none;
-        }
-
-        .menu__list-item_selected:focus,
-        .menu__list-item_selected:hover {
-            color: white;
-        }
+    .menu__list-item_selected {
+      background-color: $ui-color-surface-muted;
+      color: $ui-color-text-inverse;
     }
 
-    &_horizontal-list,
-    &_horizontal-list-bright {
-        text-align: left;
-        background-color: $secondary-blue;
-        min-height: 45px;
+    .menu__list-item:hover {
+      color: $ui-color-text-inverse;
+    }
+  }
 
-        .menu__list {
-            background-color: transparent;
-            font-size: $font-size--sm;
-        }
+  &_horizontal {
+    text-align: left;
 
-        .menu__list-item {
-            transition: none;
-            background-color: transparent;
-            color: white;
-            cursor: pointer;
-            display: inline-block;
-            margin-top: 11px;
-            margin-bottom: 10px;
-            margin-left: 20px;
-            padding: 2px 13px;
-        }
-
-        .menu__list-item:hover {
-            transition: $transition;
-            background-color: transparent;
-            color: $primary-black;
-        }
-
-        .menu__list-item:focus {
-            color: $grey;
-            outline: none;
-        }
-
-        .menu__list-item_selected,
-        .menu__list-item_selected:hover {
-            transition: $transition;
-            padding: 2px 13px;
-            border-radius: 30px;
-            background-color: $primary-blue;
-            color: white;
-        }
+    .menu__list {
+      background-color: transparent;
+      font-size: $font-size--md;
     }
 
-    &_horizontal-list-bright {
-        background-color: transparent;
-
-        .menu__list-item {
-            transition: none;
-            background-color: transparent;
-            color: black;
-            cursor: pointer;
-            display: inline-block;
-            margin-top: 11px;
-            margin-bottom: 10px;
-            margin-left: 20px;
-            padding: 2px 13px;
-        }
-
-
-        .menu__list-item_selected,
-        .menu__list-item_selected:hover {
-            transition: $transition;
-            padding: 2px 13px;
-            border-radius: 30px;
-            background-color: $primary-blue;
-            color: white;
-        }
+    .menu__icon {
+      display: block;
+      margin-right: 0;
+      margin-bottom: 12px;
+      margin-top: 8px;
+      font-size: $ui-font-size-display;
     }
+
+    .menu__list-item {
+      text-align: center;
+      background: $ui-gradient-surface;
+      color: $ui-color-text-muted;
+      cursor: pointer;
+      display: inline-block;
+      height: 112px;
+      width: 16.6667%;
+      border-right: 1px solid $ui-color-border-soft;
+      border-bottom: 1px solid $ui-color-border-soft;
+
+      @media (max-width: 667px) {
+        width: 33.3333%;
+      }
+    }
+
+    .menu__list-item_selected {
+      background: $ui-gradient-info-strip;
+      color: $ui-color-text-primary;
+    }
+
+    .menu__list-item:hover,
+    .menu__list-item:focus {
+      color: $ui-color-text-primary;
+      outline: none;
+    }
+
+    .menu__list-item_selected:focus,
+    .menu__list-item_selected:hover {
+      color: $ui-color-text-primary;
+    }
+  }
+
+  &_horizontal-list,
+  &_horizontal-list-bright {
+    text-align: left;
+    background: $ui-gradient-accent-strip;
+    min-height: 45px;
+    border-radius: 0 0 $ui-radius-xl $ui-radius-xl;
+
+    .menu__list {
+      background-color: transparent;
+      font-size: $font-size--sm;
+    }
+
+    .menu__list-item {
+      transition: none;
+      background-color: transparent;
+      color: $ui-color-text-primary;
+      cursor: pointer;
+      display: inline-block;
+      margin-top: 11px;
+      margin-bottom: 10px;
+      margin-left: 20px;
+      padding: 2px 13px;
+    }
+
+    .menu__list-item:hover {
+      transition: $transition;
+      background-color: transparent;
+      color: rgba($ui-color-text-inverse, 0.9);
+    }
+
+    .menu__list-item:focus {
+      color: $ui-color-text-accent-strong;
+      outline: none;
+    }
+
+    .menu__list-item_selected,
+    .menu__list-item_selected:hover {
+      transition: $transition;
+      padding: 2px 13px;
+      border-radius: $ui-radius-pill;
+      background-color: $ui-color-overlay-scrim;
+      color: $ui-color-text-primary;
+    }
+  }
+
+  &_horizontal-list-bright {
+    background-color: transparent;
+
+    .menu__list-item {
+      transition: none;
+      background-color: transparent;
+      color: $ui-color-text-inverse;
+      cursor: pointer;
+      display: inline-block;
+      margin-top: 11px;
+      margin-bottom: 10px;
+      margin-left: 20px;
+      padding: 2px 13px;
+    }
+
+    .menu__list-item_selected,
+    .menu__list-item_selected:hover {
+      transition: $transition;
+      padding: 2px 13px;
+      border-radius: $ui-radius-pill;
+      background-color: $ui-color-surface-strong;
+      color: $ui-color-text-primary;
+    }
+  }
 }

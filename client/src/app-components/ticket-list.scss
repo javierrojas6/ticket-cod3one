@@ -1,69 +1,157 @@
 @import "../scss/vars";
 
 .ticket-list {
-    &__order-icon {
-        padding-left: 5px;
-        font-size: 14px;
-    }
+  animation: $ui-animation-entrance;
 
-    &__filters {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 25px;
-        text-align: left;
-    }
+  &__order-icon {
+    padding-left: 5px;
+    font-size: $ui-font-size-body;
+    color: $ui-color-text-accent;
+  }
 
+  &__filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 25px;
+    text-align: left;
+    flex-wrap: wrap;
+  }
+
+  &__main-filters {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  &__department-selector {
+    display: inline-block;
+    margin-right: 10px;
+    text-align: center;
+  }
+
+  &__page-dropdown {
+    display: inline-block;
+    margin-right: 0;
+    text-align: center;
+  }
+
+  &__checkbox {
+    display: inline-block;
+    padding: $ui-space-inset-sm;
+    border-radius: $ui-radius-md;
+    border: 1px solid $ui-color-border-strong;
+    background: $ui-color-surface-elevated;
+  }
+
+  &__number {
+    text-align: left;
+    color: $ui-color-text-accent;
+  }
+
+  &__title {
+    text-align: left;
+  }
+
+  &__department {
+    text-align: right;
+  }
+
+  &__author {
+    text-align: center;
+  }
+
+  &__date {
+    text-align: right;
+    color: $ui-color-text-muted;
+  }
+
+  &__title-link {
+    color: $ui-color-text-primary;
+    font-weight: 600;
+  }
+
+  &__title-link:hover,
+  &__title-link:focus {
+    outline: none;
+    text-decoration: underline;
+    color: $ui-color-text-accent;
+  }
+
+  .table__row {
+    border-radius: $ui-radius-lg;
+  }
+
+  .table__cell:first-child {
+    border-top-left-radius: $ui-radius-lg;
+    border-bottom-left-radius: $ui-radius-lg;
+  }
+
+  .table__cell:last-child {
+    border-top-right-radius: $ui-radius-lg;
+    border-bottom-right-radius: $ui-radius-lg;
+  }
+
+  @media screen and (max-width: 760px) {
+    &__filters,
     &__main-filters {
-        display: flex;
-        align-items: center;
-        width: 100%;
+      flex-direction: column;
+      align-items: stretch;
     }
 
-    &__department-selector {
-        display: inline-block;
-        margin-right: 25px;
-        text-align: center;
+    &__department-selector,
+    &__page-dropdown,
+    .drop-down,
+    .checkbox,
+    .drop-down_medium,
+    .drop-down_large {
+      width: 100%;
     }
 
-    &__page-dropdown {
-        display: inline-block;
-        margin-right: 25px;
-        text-align: center;
+    .table__row {
+      display: block;
+      padding: 0;
+      border-top: 0;
+      background: $ui-color-surface-muted;
+      border: 1px solid $ui-color-border-strong;
+      border-radius: $ui-radius-lg;
+      overflow: hidden;
     }
 
-    &__checkbox {
-        display: inline-block;
+    .table__cell {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 14px;
+      width: 100%;
+      padding: $ui-space-inset-sm;
+      border-bottom: 1px solid $ui-color-border-soft;
     }
 
-    &__number {
-        text-align: left;
+    .table__cell:last-child {
+      border-bottom: 0;
     }
 
-    &__title {
-        text-align: left;
+    .table__cell::before {
+      content: attr(data-label);
+      color: $ui-color-text-soft;
+      font-size: $ui-font-size-caption;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      flex: 0 0 96px;
     }
 
-    &__department {
-        text-align: right;
-    }
-
-    &__author {
-        text-align: center;
-    }
-
+    &__department,
+    &__author,
     &__date {
-        text-align: right;
+      text-align: left;
     }
-
-    &__title-link:hover,
-    &__title-link:focus {
-        outline: none;
-        text-decoration: underline;
-    }
-
+  }
 }
 
 .create-ticket-form__message {
-    width: 100%;
+  width: 100%;
 }

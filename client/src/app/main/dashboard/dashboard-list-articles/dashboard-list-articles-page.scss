@@ -1,41 +1,32 @@
 @import "../../../../scss/vars";
 
 .dashboard-list-articles-page {
+  @media screen and (min-width: 993px) {
+    float: none;
+  }
 
-    @media screen and (min-width: 993px){
-        float: none;
+  &__search-box {
+    margin-bottom: 30px;
+  }
+
+  &__search-result {
+    margin-bottom: 20px;
+    text-align: left;
+
+    &-description {
+      font-size: $font-size--xs;
+      margin: 5px 0;
     }
 
-    &__search-results {
-
+    &-topic {
+      color: $ui-color-text-soft;
+      font-size: $font-size--sm;
+      text-transform: uppercase;
     }
+  }
 
-    &__search-box {
-        margin-bottom: 30px;
-    }
-
-    &__search-result {
-        margin-bottom: 20px;
-        text-align: left;
-
-        &-title {
-
-        }
-
-        &-description {
-            font-size: $font-size--xs;
-            margin: 5px 0;
-        }
-
-        &-topic {
-            color: $grey;
-            font-size: $font-size--sm;
-            text-transform: uppercase;
-        }
-    }
-
-    &_wrapped {
-        word-break: break-word;
-        padding: 0 15px;
-    }
+  &_wrapped {
+    word-break: break-word;
+    padding: 0 15px;
+  }
 }

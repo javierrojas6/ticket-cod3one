@@ -1,128 +1,150 @@
 @import "../scss/vars";
 
 .button {
+  transition:
+    transform $ui-motion-fast $ui-ease-standard,
+    box-shadow $ui-motion-fast $ui-ease-standard,
+    background-color $ui-motion-fast $ui-ease-standard,
+    color $ui-motion-fast $ui-ease-standard;
 
-    &_primary,
-    &_secondary,
-    &_tertiary {
-        border: solid transparent;
-        border-radius: 4px;
-        color: white;
-        height: 47px;
-        text-transform: uppercase;
-        transition: background-color 0.2s ease;
+  &_primary,
+  &_secondary,
+  &_tertiary {
+    @include ui-button-frame();
+    text-transform: none;
+  }
+
+  &_primary {
+    background: $ui-gradient-button-primary;
+
+    &:focus,
+    &:hover {
+      background: linear-gradient(
+        135deg,
+        lighten($ui-color-accent-primary, 4%),
+        lighten($ui-color-accent-primary-strong, 4%)
+      );
+      outline: none;
+      @include ui-hover-lift();
     }
 
-    &_primary {
-        background-color: $primary-red;
+    &.button_disabled,
+    &.button_disabled:hover {
+      background-color: lighten($ui-color-accent-primary, 15%);
+    }
+  }
 
-        &:focus, &:hover {
-            background-color: lighten($primary-red, 5%);
-            outline: none;
-        }
+  &_secondary {
+    @include ui-button-frame($ui-color-text-inverse);
+    background: $ui-gradient-button-secondary;
 
-
-        &.button_disabled,
-        &.button_disabled:hover {
-            background-color: lighten($primary-red, 15%);
-        }
+    &:focus,
+    &:hover {
+      background: linear-gradient(
+        135deg,
+        lighten($ui-color-accent-secondary, 4%),
+        lighten($ui-color-accent-secondary-strong, 4%)
+      );
+      outline: none;
+      @include ui-hover-lift();
     }
 
-    &_secondary {
-        background-color: $primary-green;
+    &.button_disabled,
+    &.button_disabled:hover {
+      background-color: lighten($ui-color-accent-secondary, 15%);
+    }
+  }
 
-        &:focus, &:hover {
-            background-color: lighten($primary-green, 5%);
-            outline: none;
-        }
+  &_tertiary {
+    background: $ui-gradient-button-tertiary;
 
-        &.button_disabled,
-        &.button_disabled:hover {
-            background-color: lighten($primary-green, 15%);
-        }
+    &:focus,
+    &:hover {
+      background: linear-gradient(
+        135deg,
+        lighten($ui-color-accent-tertiary, 4%),
+        lighten($ui-color-accent-tertiary-strong, 4%)
+      );
+      outline: none;
+      @include ui-hover-lift();
     }
 
-    &_tertiary {
-        background-color: $secondary-blue;
+    &.button_disabled,
+    &.button_disabled:hover {
+      background-color: lighten($ui-color-accent-tertiary, 15%);
+    }
+  }
 
-        &:focus, &:hover {
-            background-color: lighten($secondary-blue, 5%);
-            outline: none;
-        }
+  &_extra-small {
+    text-transform: none;
+    width: $ui-button-width-xs;
+    height: $ui-button-height-xs;
+  }
 
-        &.button_disabled,
-        &.button_disabled:hover {
-            background-color: lighten($secondary-blue, 15%);
-        }
+  &_small {
+    width: $ui-button-width-sm;
+    height: 47px;
+  }
+
+  &_medium {
+    min-width: 70px;
+    width: auto;
+    padding: 5px 15px;
+    height: $ui-button-height-sm;
+    text-transform: none;
+  }
+
+  &_large {
+    width: $ui-button-width-lg;
+  }
+
+  &_auto {
+    width: initial;
+    height: initial;
+  }
+
+  &_clean {
+    background: none;
+    border: none;
+    width: initial;
+    height: initial;
+  }
+
+  &_link {
+    background: none;
+    border: none;
+    color: $ui-color-text-muted;
+    width: initial;
+    height: initial;
+
+    &:focus,
+    &:hover {
+      outline: none;
+      text-decoration: underline;
+      color: $ui-color-text-primary;
+    }
+  }
+
+  &_inverted {
+    background-color: $ui-color-text-primary;
+
+    &:focus,
+    &:hover {
+      background-color: $ui-color-text-primary;
+      opacity: 0.9;
+      outline: none;
     }
 
-    &_extra-small {
-        text-transform: none;
-        width: 130px;
-        height: 30px;
+    &.button_primary {
+      color: $ui-color-accent-primary;
     }
 
-    &_small {
-        width: 100px;
-        height: 47px;
+    &.button_secondary {
+      color: $ui-color-accent-secondary-strong;
     }
 
-    &_medium {
-        min-width: 70px;
-        width: auto;
-        padding: 5px 15px;
-        height: 35px;
-        text-transform: none;
+    &.button_tertiary {
+      color: $ui-color-accent-tertiary;
     }
-
-    &_large {
-        width: 239px;
-    }
-
-    &_auto {
-        width: initial;
-        height: initial;
-    }
-
-    &_clean {
-        background: none;
-        border: none;
-        width: initial;
-        height: initial;
-    }
-
-    &_link {
-        background: none;
-        border: none;
-        color: $dark-grey;
-        width: initial;
-        height: initial;
-
-        &:focus, &:hover {
-            outline: none;
-            text-decoration: underline;
-        }
-    }
-
-    &_inverted {
-        background-color: white;
-
-        &:focus, &:hover {
-            background-color: white;
-            opacity: 0.9;
-            outline: none;
-        }
-
-        &.button_primary {
-            color: $primary-red;
-        }
-
-        &.button_secondary {
-            color: $primary-green;
-        }
-
-        &.button_tertiary {
-            color: $secondary-blue;
-        }
-    }
+  }
 }

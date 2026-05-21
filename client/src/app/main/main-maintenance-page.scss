@@ -1,39 +1,40 @@
 @import "../../scss/vars";
 
 .main-maintenance-page {
-    margin: auto;
-    width: 70%;
-    padding: 50px 100px;
-    border: 2px solid $dark-grey;
-    text-align: center;
-    background-color: white;
-    border-radius: 4px;
+  margin: auto;
+  width: 70%;
+  padding: 50px 100px;
+  border: 1px solid $ui-color-border-soft;
+  text-align: center;
+  background-color: $ui-color-surface-base;
+  border-radius: $ui-radius-sm;
+  color: $ui-color-text-primary;
 
-    &__icon {
-        color: $primary-yellow;
-        background-color: $light-grey;
-        display: inline-block;
-        padding: 10px 15px;
-        margin-bottom: 20px;
-        border-radius: 10px;
-    }
+  &__icon {
+    color: $ui-color-warning-icon;
+    background-color: $ui-color-warning-surface;
+    display: inline-block;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    border-radius: $ui-radius-sm;
+  }
 
-    &__title {
-        font-size: $font-size--xl;
-        margin-bottom: 30px;
-        color: $primary-yellow;
-        font-weight: bold;
-    }
+  &__title {
+    font-size: $font-size--xl;
+    margin-bottom: 30px;
+    color: $ui-color-warning-icon;
+    font-weight: bold;
+  }
 
-    &__description {
-        font-size: $font-size--bg;
-        color: $primary-black;
-    }
+  &__description {
+    font-size: $font-size--bg;
+    color: $ui-color-text-secondary;
+  }
 }
 
 @media screen and (max-width: 500px) {
-    .main-maintenance-page {
-        padding-left: 0;
-        padding-right: 0;
-    }
+  .main-maintenance-page {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }

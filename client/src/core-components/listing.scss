@@ -1,25 +1,27 @@
 @import "../scss/vars";
 
 .listing {
-    border: 2px solid $grey;
-    min-height: 300px;
+  border: 1px solid $ui-color-border-soft;
+  border-radius: $ui-radius-md;
+  background: $ui-color-surface-soft;
+  color: $ui-color-text-secondary;
+  min-height: $ui-layout-content-min-height;
 
-    &__header {
-        padding: 15px 0;
+  &__header {
+    padding: 15px 0;
+  }
+
+  &__menu {
+    text-align: left;
+  }
+
+  &__add {
+    &-button {
+      border-radius: 0;
+      height: 36px;
+      font-size: $font-size--sm;
+      text-transform: none;
+      width: 100%;
     }
-
-    &__menu {
-        text-align: left;
-    }
-
-    &__add {
-
-        &-button {
-            border-radius: 0;
-            height: 36px;
-            font-size: $font-size--sm;
-            text-transform: none;
-            width: 100%;
-        }
-    }
+  }
 }

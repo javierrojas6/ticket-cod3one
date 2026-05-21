@@ -1,22 +1,26 @@
 @import "../scss/vars";
 
 .stat-card {
-    margin: 0 4px;
+  margin: 0 4px;
 
-    &__wrapper {
-        padding: 10px;
-        min-width: 160px;
-        margin: 8px auto;
-        transition: 0.3s;
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-        text-align: center;
-        &:hover {
-            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-        }
-    }
+  &__wrapper {
+    padding: 10px;
+    min-width: 160px;
+    margin: 8px auto;
+    transition:
+      box-shadow $ui-motion-normal $ui-ease-standard,
+      transform $ui-motion-fast $ui-ease-standard;
+    box-shadow: $ui-shadow-md;
+    text-align: center;
 
-    &__container {
-        font-size: $font-size--lg;
-        padding: 16px;
+    &:hover {
+      box-shadow: $ui-shadow-lg;
+      @include ui-hover-lift();
     }
+  }
+
+  &__container {
+    font-size: $font-size--lg;
+    padding: 16px;
+  }
 }

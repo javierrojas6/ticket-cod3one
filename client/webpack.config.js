@@ -99,11 +99,13 @@ const getFrontendEnvironment = webpackEnv => {
 
 const buildRuntimeConfig = frontendEnv => {
     return [
-        `opensupports_version = ${JSON.stringify(version)};`,
-        `root = ${JSON.stringify(frontendEnv.clientRoot)};`,
-        `apiRoot = ${JSON.stringify(frontendEnv.apiRoot)};`,
-        `globalIndexPath = ${JSON.stringify(frontendEnv.globalIndexPath)};`,
-        `showLogs = ${frontendEnv.showLogs};`,
+        'window.__OS_PUBLIC_CONFIG__ = {',
+        `  version: ${JSON.stringify(version)},`,
+        `  root: ${JSON.stringify(frontendEnv.clientRoot)},`,
+        `  apiRoot: ${JSON.stringify(frontendEnv.apiRoot)},`,
+        `  globalIndexPath: ${JSON.stringify(frontendEnv.globalIndexPath)},`,
+        `  showLogs: ${frontendEnv.showLogs},`,
+        '};',
         '',
     ].join('\n');
 };

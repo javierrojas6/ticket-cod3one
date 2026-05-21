@@ -1,44 +1,45 @@
 @import "../scss/vars";
 
 .card {
-    border-radius: 4px;
-    color: white;
-    height: 260px;
-    padding: 15px;
-    position: relative;
+  border-radius: $ui-radius-sm;
+  color: $ui-color-text-primary;
+  height: 260px;
+  padding: 15px;
+  position: relative;
+  box-shadow: $ui-shadow-md;
 
-    &__title {
-        font-variant: small-caps;
-        margin: 10px 0;
-        font-size: $font-size--lg;
-    }
+  &__title {
+    font-variant: small-caps;
+    margin: 10px 0;
+    font-size: $font-size--lg;
+  }
 
-    &__description {
-        font-size: $font-size--sm;
-    }
+  &__description {
+    font-size: $font-size--sm;
+  }
 
-    &__button {
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 17px;
-    }
+  &__button {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 17px;
+  }
 
-    @media (max-width: 1060px) {
-        .button {
-            width: 80%;
-        }
+  @media (max-width: 1060px) {
+    .button {
+      width: 80%;
     }
+  }
 
-    &_red {
-        background-color: $primary-red;
-    }
+  &_red {
+    background: $ui-gradient-button-primary;
+  }
 
-    &_blue {
-        background-color: $secondary-blue;
-    }
+  &_blue {
+    background: $ui-gradient-button-tertiary;
+  }
 
-    &_green {
-        background-color: $primary-green;
-    }
+  &_green {
+    background: $ui-gradient-button-secondary;
+  }
 }

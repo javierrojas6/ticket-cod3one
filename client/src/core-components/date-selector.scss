@@ -1,43 +1,48 @@
 @import "../scss/vars";
 
 .date-selector {
-    border-radius: 4px;
-    border-style: solid;
+  border-radius: $ui-radius-sm;
+  border-style: solid;
+  border-width: 1px;
+  border-color: $ui-color-border-soft;
+  background-color: $ui-color-surface-base;
+  color: $ui-color-text-primary;
+
+  &:focus {
     border-width: 1px;
-    border-color: $medium-grey;
-    background-color: $very-light-grey;
-    &:focus {
-        outline: none;
-        border-width: 1px;
-        border-color: $primary-blue;
-    }
+    @include ui-focus-ring();
+  }
 }
 
-input[type=date] {
-    outline: none;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    padding-left: 2px;
+input[type="date"] {
+  outline: none;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 2px;
 
-    &::-webkit-clear-button {
-        -webkit-appearance: none;
-        display: inline-block;
-        width: 10px;
-        height: 10px;
-        background:
-            linear-gradient(
-                45deg,
-                rgba(0,0,0,0) 0%,
-                rgba(0,0,0,0) 43%,
-                red 45%, red 55%,
-                rgba(0,0,0,0) 57%,
-                rgba(0,0,0,0) 100%),
-            linear-gradient(
-                135deg,
-                $very-light-grey,
-                $very-light-grey 43%,
-                red 45%, red 55%,
-                $very-light-grey 57%,
-                $very-light-grey 100%);
-    }
+  &::-webkit-clear-button {
+    -webkit-appearance: none;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background:
+      linear-gradient(
+        45deg,
+        transparent 0%,
+        transparent 43%,
+        $ui-color-error-icon 45%,
+        $ui-color-error-icon 55%,
+        transparent 57%,
+        transparent 100%
+      ),
+      linear-gradient(
+        135deg,
+        $ui-color-surface-base,
+        $ui-color-surface-base 43%,
+        $ui-color-error-icon 45%,
+        $ui-color-error-icon 55%,
+        $ui-color-surface-base 57%,
+        $ui-color-surface-base 100%
+      );
+  }
 }

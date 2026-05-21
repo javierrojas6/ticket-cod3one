@@ -1,34 +1,52 @@
 @import "../scss/vars";
 
 .text-editor {
+  .text-editor__editor {
+    background: $ui-color-surface-control;
+    border: 1px solid $ui-color-border-strong;
+    border-radius: $ui-radius-lg;
+    color: $ui-color-text-primary;
+    overflow: hidden;
+    transition:
+      border-color $ui-motion-fast $ui-ease-standard,
+      box-shadow $ui-motion-fast $ui-ease-standard,
+      background-color $ui-motion-fast $ui-ease-standard;
 
+    .ql-toolbar {
+      border: 0;
+      border-bottom: 1px solid $ui-color-border-subtle;
+      background: $ui-color-surface-muted;
+    }
+
+    .ql-editor {
+      min-height: 200px;
+      color: $ui-color-text-primary;
+    }
+
+    .ql-picker,
+    .ql-stroke,
+    .ql-fill {
+      color: $ui-color-text-muted;
+    }
+  }
+
+  &_focused {
     .text-editor__editor {
-        background-color: white;
-        border: 1px solid $grey;
-        border-radius: 3px;
-
-        .ql-editor {
-            min-height: 200px;
-        }
+      @include ui-focus-ring();
+      background: $ui-color-surface-control-focus;
     }
+  }
 
-    &_focused {
-        .text-editor__editor {
-            border-color: $primary-blue;
-        }
+  &_errored {
+    .text-editor__editor {
+      border: 1px solid $ui-color-border-danger;
     }
+  }
 
-    &_errored {
-        .text-editor__editor {
-            border: 1px solid $primary-red;
-        }
+  &_textarea {
+    .text-editor__editor {
+      height: 200px;
+      width: 100%;
     }
-
-    &_textarea {
-        .text-editor__editor {
-            height: 200px;
-            padding-left: 10px;
-            width: 100%;
-        }
-    }
+  }
 }

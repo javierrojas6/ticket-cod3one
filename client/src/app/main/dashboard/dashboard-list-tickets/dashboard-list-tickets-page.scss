@@ -1,12 +1,20 @@
 .dashboard-ticket-list {
+  animation: $ui-animation-entrance;
 
-    &__supervisor-form {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
+  &__supervisor-form {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+    padding: $ui-space-inset-lg;
+    border-radius: $ui-radius-lg;
+    border: 1px solid $ui-color-border-strong;
+    background: $ui-color-surface-soft;
 
-        &-checkbox {
-            margin-left: 20px;
-        }
+    &-checkbox {
+      margin-left: 0;
     }
+  }
 }

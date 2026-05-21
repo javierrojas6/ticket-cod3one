@@ -1,7 +1,6 @@
 echo "1/3 Building frontend..."
 cd client
 npm run build
-rm build/index.html
 echo "2/3 Creating api folder..."
 cd ../server
 echo -n > config.php
@@ -23,13 +22,9 @@ mv server/vendor api
 mv server/files api
 cp server/config.php api
 chmod -R 755 .
-cp client/src/index.php client/build
 echo "3/3 Generating zip..."
 cd client/build
-zip opensupports_dev.zip index.php
-zip -u opensupports_dev.zip .htaccess
-zip -u opensupports_dev.zip bundle.js
-zip -ur opensupports_dev.zip images
+zip -ur opensupports_dev.zip . -x "*.map"
 mv opensupports_dev.zip ../..
 cd ../..
 zip -ur opensupports_dev.zip api

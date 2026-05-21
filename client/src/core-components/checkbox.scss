@@ -1,44 +1,44 @@
 @import "../scss/vars";
 
 .checkbox {
-    color: $primary-black;
-    border-radius: 5px;
-    display: inline-block;
+  color: $ui-color-text-muted;
+  border-radius: $ui-radius-xs;
+  display: inline-block;
 
-    &__box {
-        display: none;
+  &__box {
+    display: none;
+  }
+
+  &__icon {
+    color: $ui-color-text-soft;
+    outline: none;
+
+    &:focus {
+      color: $ui-color-text-accent;
     }
+  }
 
-    &__icon {
-        color: $medium-grey;
-        outline: none;
+  &__label {
+    margin-left: 10px;
+  }
 
-        &:focus {
-            color: $grey;
-        }
+  &_checked {
+    .checkbox__icon {
+      color: $ui-color-info-icon;
+
+      &:focus {
+        color: $ui-color-text-accent-strong;
+      }
     }
+  }
 
-    &__label {
-        margin-left: 10px;
+  &_disabled {
+    .checkbox__icon {
+      color: $ui-color-text-placeholder;
+
+      &:focus {
+        color: $ui-color-text-placeholder;
+      }
     }
-
-    &_checked {
-        .checkbox__icon {
-            color: $primary-red;
-
-            &:focus {
-                color: lighten($primary-red, 5%);;
-            }
-        }
-    }
-
-    &_disabled {
-        .checkbox__icon {
-            color: $light-grey;
-
-            &:focus {
-                color: $light-grey;
-            }
-        }
-    }
+  }
 }

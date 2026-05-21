@@ -1,18 +1,42 @@
 @import "vars";
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: Helvetica, sans-serif;
-    background-color: $light-grey;
+  font-family: $ui-font-family-base;
+  color: $ui-color-text-primary;
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(32, 184, 197, 0.08),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at top right,
+      rgba(221, 85, 85, 0.12),
+      transparent 24%
+    ),
+    $ui-gradient-app-background;
 }
 
 .separator {
-    background-color: $grey;
-    display: block;
-    margin: 30px 0;
-    height: 1px;
-    width: 100%;
+  background-color: $ui-color-border-strong;
+  display: block;
+  margin: 30px 0;
+  height: 1px;
+  width: 100%;
+}
+
+@keyframes os-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

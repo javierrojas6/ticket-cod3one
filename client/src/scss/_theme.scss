@@ -1,0 +1,356 @@
+// Global UI theme tokens.
+// This file is imported from _vars.scss so all existing component imports keep working.
+
+// Typography
+$ui-font-family-base:
+  "Segoe UI Variable Text", "Segoe UI", Helvetica, sans-serif;
+$ui-font-family-system:
+  "Segoe UI Variable Text", "Segoe UI", Helvetica, Arial, sans-serif;
+$ui-font-family-code: Menlo, Monaco, Consolas, "Courier New", monospace;
+
+$ui-font-size-caption: $font-size--xs;
+$ui-font-size-body: $font-size--sm;
+$ui-font-size-label: 12px;
+$ui-font-size-control: 15px;
+$ui-font-size-title: $font-size--md;
+$ui-font-size-section: 17px;
+$ui-font-size-page-title: $font-size--lg;
+$ui-font-size-display: 40px;
+$ui-font-size-title-compact: 20px;
+
+// Colors
+$ui-color-bg-canvas-start: #08111d;
+$ui-color-bg-canvas-mid: #0d1728;
+$ui-color-bg-canvas-end: #09121f;
+$ui-color-surface-strong: rgba(18, 31, 51, 0.98);
+$ui-color-surface-base: rgba(10, 18, 31, 0.98);
+$ui-color-surface-elevated: rgba(8, 18, 31, 0.98);
+$ui-color-surface-soft: rgba(11, 20, 34, 0.98);
+$ui-color-surface-contrast: rgba(9, 16, 28, 0.98);
+$ui-color-surface-muted: rgba(255, 255, 255, 0.03);
+$ui-color-surface-muted-hover: rgba(255, 255, 255, 0.05);
+$ui-color-surface-control: rgba(4, 12, 24, 0.72);
+$ui-color-surface-control-focus: rgba(8, 18, 31, 0.92);
+$ui-color-overlay-scrim: rgba(2, 6, 16, 0.78);
+
+$ui-color-text-primary: #f8fafc;
+$ui-color-text-secondary: #dbe5f2;
+$ui-color-text-muted: #cbd5e1;
+$ui-color-text-soft: #94a3b8;
+$ui-color-text-placeholder: #7f8da3;
+$ui-color-text-accent: #8fd6ff;
+$ui-color-text-accent-strong: #dff7ff;
+$ui-color-text-inverse: #07111f;
+
+$ui-color-border-subtle: rgba(255, 255, 255, 0.07);
+$ui-color-border-strong: rgba(255, 255, 255, 0.08);
+$ui-color-border-soft: rgba(255, 255, 255, 0.05);
+$ui-color-border-focus: rgba(143, 214, 255, 0.65);
+$ui-color-border-focus-hover: rgba(143, 214, 255, 0.35);
+$ui-color-border-danger: rgba(255, 125, 141, 0.6);
+
+$ui-color-accent-primary: #dd5555;
+$ui-color-accent-primary-strong: #a83d46;
+$ui-color-accent-secondary: #89d3a0;
+$ui-color-accent-secondary-strong: #5dae7a;
+$ui-color-accent-tertiary: #20b8c5;
+$ui-color-accent-tertiary-strong: #0e4b5c;
+
+$ui-color-success-surface: rgba(87, 191, 129, 0.14);
+$ui-color-success-border: rgba(87, 191, 129, 0.24);
+$ui-color-success-text: #d8ffeb;
+$ui-color-success-icon: #9de2b7;
+
+$ui-color-error-surface: rgba(221, 85, 85, 0.14);
+$ui-color-error-border: rgba(221, 85, 85, 0.22);
+$ui-color-error-text: #ffe0e4;
+$ui-color-error-icon: #ffadb8;
+
+$ui-color-info-surface: rgba(32, 184, 197, 0.12);
+$ui-color-info-border: rgba(32, 184, 197, 0.24);
+$ui-color-info-text: #e0f8ff;
+$ui-color-info-icon: #8fd6ff;
+
+$ui-color-warning-surface: rgba(252, 185, 0, 0.14);
+$ui-color-warning-border: rgba(252, 185, 0, 0.24);
+$ui-color-warning-text: #fff4cf;
+$ui-color-warning-icon: #fdd978;
+$ui-color-warning-surface-strong: rgba(78, 60, 18, 0.98);
+$ui-color-warning-surface-muted: rgba(120, 94, 27, 0.18);
+
+$ui-color-focus-ring: rgba(32, 184, 197, 0.14);
+$ui-color-hover-accent: rgba(32, 184, 197, 0.16);
+
+$ui-gradient-app-background: linear-gradient(
+  180deg,
+  $ui-color-bg-canvas-start 0%,
+  $ui-color-bg-canvas-mid 56%,
+  $ui-color-bg-canvas-end 100%
+);
+$ui-gradient-surface: linear-gradient(
+  180deg,
+  rgba(18, 31, 51, 0.96),
+  rgba(10, 18, 31, 0.96)
+);
+$ui-gradient-surface-strong: linear-gradient(
+  180deg,
+  $ui-color-surface-strong,
+  $ui-color-surface-base
+);
+$ui-gradient-surface-panel: linear-gradient(
+  135deg,
+  $ui-color-surface-strong,
+  $ui-color-surface-contrast
+);
+$ui-gradient-button-primary: linear-gradient(
+  135deg,
+  $ui-color-accent-primary,
+  $ui-color-accent-primary-strong
+);
+$ui-gradient-button-secondary: linear-gradient(
+  135deg,
+  $ui-color-accent-secondary,
+  $ui-color-accent-secondary-strong
+);
+$ui-gradient-button-tertiary: linear-gradient(
+  135deg,
+  $ui-color-accent-tertiary,
+  $ui-color-accent-tertiary-strong
+);
+$ui-gradient-accent-strip: linear-gradient(
+  90deg,
+  rgba(19, 186, 213, 0.8),
+  rgba(17, 146, 170, 0.72)
+);
+$ui-gradient-accent-panel: linear-gradient(
+  90deg,
+  rgba(20, 184, 198, 0.88),
+  rgba(14, 75, 92, 0.82)
+);
+$ui-gradient-info-panel: linear-gradient(
+  135deg,
+  rgba(32, 184, 197, 0.9),
+  rgba(14, 75, 92, 0.88)
+);
+$ui-gradient-info-strip: linear-gradient(
+  180deg,
+  rgba(32, 184, 197, 0.22),
+  rgba(255, 255, 255, 0.02)
+);
+$ui-gradient-staff-panel: linear-gradient(
+  135deg,
+  rgba(24, 78, 119, 0.9),
+  rgba(13, 38, 59, 0.92)
+);
+$ui-gradient-warning-panel: linear-gradient(
+  135deg,
+  rgba(156, 118, 16, 0.95),
+  rgba(107, 74, 12, 0.95)
+);
+$ui-gradient-warning-surface: linear-gradient(
+  180deg,
+  rgba(78, 60, 18, 0.88),
+  rgba(42, 31, 9, 0.92)
+);
+
+// Spacing
+$ui-space-1: 4px;
+$ui-space-2: 8px;
+$ui-space-3: 12px;
+$ui-space-4: 16px;
+$ui-space-5: 18px;
+$ui-space-6: 24px;
+$ui-space-7: 30px;
+$ui-space-8: 34px;
+
+$ui-space-inset-sm: 12px 14px;
+$ui-space-inset-md: 14px 18px;
+$ui-space-inset-lg: 16px 18px;
+$ui-space-inset-xl: 22px 18px;
+$ui-space-inset-pill: 6px 10px;
+
+// Radius
+$ui-radius-xs: 6px;
+$ui-radius-sm: 10px;
+$ui-radius-md: 14px;
+$ui-radius-lg: 18px;
+$ui-radius-xl: 22px;
+$ui-radius-2xl: 26px;
+$ui-radius-modal: 28px;
+$ui-radius-pill: 999px;
+
+// Controls and buttons
+$ui-control-height-sm: 35px;
+$ui-control-height-md: 44px;
+$ui-control-height-lg: 46px;
+$ui-icon-button-size: 36px;
+
+$ui-button-height-xs: 30px;
+$ui-button-height-sm: 35px;
+$ui-button-height-md: 44px;
+$ui-button-width-xs: 130px;
+$ui-button-width-sm: 100px;
+$ui-button-width-lg: 239px;
+
+$ui-loading-spinner-font-size-sm: 4px;
+$ui-loading-spinner-font-size-lg: 7px;
+$ui-loading-spinner-size-sm: 30px;
+$ui-loading-spinner-size-lg: 60px;
+
+$ui-layout-auth-page-padding: 32px 16px;
+$ui-layout-auth-page-padding-mobile: 18px 10px;
+$ui-layout-content-min-height: 300px;
+$ui-layout-panel-min-height: 361px;
+
+// Effects and motion
+$ui-shadow-sm: 0 10px 22px rgba(2, 8, 23, 0.16);
+$ui-shadow-md: 0 12px 28px rgba(2, 8, 23, 0.2);
+$ui-shadow-lg: 0 18px 44px rgba(2, 8, 23, 0.32);
+$ui-shadow-xl: 0 24px 72px rgba(2, 8, 23, 0.34);
+$ui-shadow-overlay: 0 28px 80px rgba(2, 8, 23, 0.4);
+
+$ui-motion-fast: 0.2s;
+$ui-motion-normal: 0.3s;
+$ui-motion-entrance: 0.45s;
+$ui-ease-standard: ease;
+$ui-transition-interactive:
+  background-color $ui-motion-normal $ui-ease-standard,
+  color $ui-motion-normal $ui-ease-standard;
+$ui-transition-expand-fade:
+  max-height $ui-motion-fast $ui-ease-standard,
+  opacity $ui-motion-fast $ui-ease-standard;
+$ui-animation-entrance: os-fade-up $ui-motion-entrance $ui-ease-standard;
+
+:root {
+  --ui-font-family-base: #{$ui-font-family-base};
+  --ui-font-family-system: #{$ui-font-family-system};
+  --ui-font-family-code: #{$ui-font-family-code};
+  --ui-color-bg-canvas-start: #{$ui-color-bg-canvas-start};
+  --ui-color-bg-canvas-mid: #{$ui-color-bg-canvas-mid};
+  --ui-color-bg-canvas-end: #{$ui-color-bg-canvas-end};
+  --ui-color-surface-strong: #{$ui-color-surface-strong};
+  --ui-color-surface-base: #{$ui-color-surface-base};
+  --ui-color-surface-control: #{$ui-color-surface-control};
+  --ui-color-text-primary: #{$ui-color-text-primary};
+  --ui-color-text-secondary: #{$ui-color-text-secondary};
+  --ui-color-text-muted: #{$ui-color-text-muted};
+  --ui-color-text-soft: #{$ui-color-text-soft};
+  --ui-color-accent-primary: #{$ui-color-accent-primary};
+  --ui-color-accent-secondary: #{$ui-color-accent-secondary};
+  --ui-color-accent-tertiary: #{$ui-color-accent-tertiary};
+  --ui-radius-md: #{$ui-radius-md};
+  --ui-radius-lg: #{$ui-radius-lg};
+  --ui-radius-xl: #{$ui-radius-xl};
+  --ui-radius-2xl: #{$ui-radius-2xl};
+  --ui-shadow-md: #{$ui-shadow-md};
+  --ui-shadow-lg: #{$ui-shadow-lg};
+  --ui-shadow-xl: #{$ui-shadow-xl};
+  --ui-motion-fast: #{$ui-motion-fast};
+  --ui-motion-normal: #{$ui-motion-normal};
+  --ui-motion-entrance: #{$ui-motion-entrance};
+}
+
+@mixin ui-focus-ring(
+  $border-color: $ui-color-border-focus,
+  $ring-color: $ui-color-focus-ring
+) {
+  outline: none;
+  border-color: $border-color;
+  box-shadow: 0 0 0 3px $ring-color;
+}
+
+@mixin ui-hover-lift($distance: -1px) {
+  transform: translateY($distance);
+}
+
+@mixin ui-surface-card(
+  $padding: $ui-space-6,
+  $radius: $ui-radius-2xl,
+  $shadow: $ui-shadow-xl,
+  $background: $ui-gradient-surface,
+  $border-color: $ui-color-border-subtle
+) {
+  background: $background;
+  border: 1px solid $border-color;
+  border-radius: $radius;
+  color: $ui-color-text-primary;
+  padding: $padding;
+  box-shadow: $shadow;
+}
+
+@mixin ui-surface-subtle(
+  $padding: $ui-space-5,
+  $radius: $ui-radius-xl,
+  $background: $ui-color-surface-muted,
+  $border-color: $ui-color-border-subtle
+) {
+  background: $background;
+  border: 1px solid $border-color;
+  border-radius: $radius;
+  padding: $padding;
+}
+
+@mixin ui-control-base(
+  $min-height: $ui-control-height-lg,
+  $radius: $ui-radius-md,
+  $padding: 10px 14px
+) {
+  background: $ui-color-surface-control;
+  border: 1px solid $ui-color-border-strong;
+  border-radius: $radius;
+  color: $ui-color-text-primary;
+  min-height: $min-height;
+  padding: $padding;
+  transition:
+    border-color $ui-motion-fast $ui-ease-standard,
+    box-shadow $ui-motion-fast $ui-ease-standard,
+    background-color $ui-motion-fast $ui-ease-standard,
+    color $ui-motion-fast $ui-ease-standard;
+
+  &:hover {
+    border-color: $ui-color-border-focus-hover;
+  }
+
+  &:focus {
+    @include ui-focus-ring();
+    background: $ui-color-surface-control-focus;
+  }
+}
+
+@mixin ui-button-frame($text-color: $ui-color-text-primary) {
+  border: solid transparent;
+  border-radius: $ui-radius-md;
+  color: $text-color;
+  height: $ui-button-height-md;
+  text-transform: none;
+  font-weight: 600;
+  box-shadow: $ui-shadow-md;
+  transition:
+    transform $ui-motion-fast $ui-ease-standard,
+    box-shadow $ui-motion-fast $ui-ease-standard,
+    background-color $ui-motion-fast $ui-ease-standard,
+    color $ui-motion-fast $ui-ease-standard;
+}
+
+@mixin ui-status-surface(
+  $background,
+  $border-color,
+  $title-color,
+  $icon-color,
+  $content-color: $title-color
+) {
+  background: $background;
+  border-color: $border-color;
+
+  .message__icon {
+    color: $icon-color;
+  }
+
+  .message__title {
+    color: $title-color;
+  }
+
+  .message__content {
+    color: $content-color;
+  }
+}

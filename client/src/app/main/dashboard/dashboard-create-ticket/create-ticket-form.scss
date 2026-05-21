@@ -1,41 +1,82 @@
 .create-ticket-form {
+  animation: $ui-animation-entrance;
 
-    &__file {
-        text-align: left;
+  &__file {
+    text-align: left;
+    width: 100%;
+  }
+
+  &__message {
+    margin-top: 20px;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 24px;
+  }
+
+  &__buttons-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 14px;
+    z-index: 999;
+    padding: 18px;
+    border-radius: $ui-radius-xl;
+    border: 1px solid $ui-color-border-strong;
+    background: $ui-color-surface-soft;
+    min-width: 280px;
+
+    &-without-allow-attachments {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 14px;
+      z-index: 999;
+      width: 100%;
     }
+  }
 
-    &__message {
-        margin-top: 20px;
-    }
+  &__captcha-container {
+    padding-right: 20px;
+  }
 
+  &__captcha {
+    margin: 0 auto 20px;
+    height: 78px;
+    width: 304px;
+  }
+
+  @media screen and (max-width: 900px) {
     &__container {
-        display: flex;
-        flex-direction: row-reverse;
+      flex-direction: column;
+      align-items: stretch;
     }
 
-    &__buttons-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-end;
-        z-index: 999;
-
-        &-without-allow-attachments {
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-end;
-            align-items: center;
-            z-index: 999;
-        }
+    &__buttons-container,
+    &__buttons-container-without-allow-attachments {
+      min-width: 0;
+      width: 100%;
+      align-items: stretch;
     }
 
     &__captcha-container {
-        padding-right: 20px;
+      padding-right: 0;
     }
+  }
 
+  @media screen and (max-width: 480px) {
     &__captcha {
-        margin: 0 auto 20px;
-        height: 78px;
-        width: 304px;
+      width: 100%;
+      transform-origin: left center;
+      transform: scale(0.92);
+      margin-left: 0;
     }
+  }
 }

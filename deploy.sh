@@ -74,8 +74,6 @@ echo ""
 echo "1/5 Building frontend..."
 pushd "$CLIENT_DIR" >/dev/null
 npm run build
-rm -f "$FRONT_BUILD_DIR/index.html"
-cp "$CLIENT_DIR/src/index.php" "$FRONT_BUILD_DIR/index.php"
 popd >/dev/null
 
 echo "2/5 Preparing deployment staging..."

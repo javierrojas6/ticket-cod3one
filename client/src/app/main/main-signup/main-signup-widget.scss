@@ -1,23 +1,41 @@
 .signup-widget {
-    padding: 30px;
-    text-align: center;
+  padding: 30px;
+  text-align: center;
+  animation: $ui-animation-entrance;
 
-    @media screen and (min-width: 993px){
-        float: none;
-    }
+  @media screen and (min-width: 993px) {
+    float: none;
+  }
 
-    &__form {
-        margin-bottom: 20px;
-    }
+  &__form {
+    margin-bottom: 20px;
+  }
+
+  &__inputs {
+    display: block;
+    margin: 0 auto;
+    max-width: 420px;
+    text-align: left;
+  }
+
+  &__captcha {
+    margin: 10px auto 20px;
+    height: 78px;
+    width: 304px;
+  }
+
+  @media screen and (max-width: 640px) {
+    padding: $ui-space-inset-xl;
 
     &__inputs {
-        display: inline-block;
-        margin: 0 auto;
+      max-width: none;
     }
 
     &__captcha {
-        margin: 10px auto 20px;
-        height: 78px;
-        width: 304px;
+      width: 100%;
+      transform: scale(0.92);
+      transform-origin: center top;
+      margin-bottom: 6px;
     }
+  }
 }

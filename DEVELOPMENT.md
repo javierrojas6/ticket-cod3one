@@ -30,7 +30,7 @@ You can also create `client/.env` to point the frontend to another endpoint with
 
 Just as there is a task for development, there is also a `npm build` task for putting the project into a production-ready state. This will run each of the tasks, while also adding the image minification task discussed above and the result store in `dist/` folder.
 
-**Reminder:** Notice there is `index.html` and `index.php`. The first one searches the backend server where `config.js` says it, the second one uses `/api` to find the server. If you want to run OpenSupports in a single server, then use `index.php`.
+**Reminder:** The frontend is deployed as a static app. Publish `index.html`, `config.js`, generated chunks, and assets; runtime endpoint resolution now comes from `config.js` rather than a PHP entrypoint.
 
 #### Frontend Unit Testing
 1. Do the steps described before.

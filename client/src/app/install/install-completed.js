@@ -7,24 +7,23 @@ import i18n from 'lib-app/i18n';
 import Message from 'core-components/message';
 
 class InstallCompleted extends React.Component {
+  componentDidMount() {
+    store.dispatch(ConfigActions.init());
 
-    componentDidMount() {
-        store.dispatch(ConfigActions.init());
+    setTimeout(() => {
+      store.dispatch(ConfigActions.checkInstallation());
+    }, 3000);
+  }
 
-        setTimeout(() => {
-            store.dispatch(ConfigActions.checkInstallation());
-        }, 3000);
-    }
-
-    render() {
-        return (
-            <div className="install-completed">
-                <Message showCloseButton={false} title={i18n('INSTALLATION_COMPLETED_TITLE')} type="success">
-                    {i18n('INSTALLATION_COMPLETED_DESCRIPTION')}
-                </Message>
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div className="install-completed">
+        <Message showCloseButton={false} title={i18n('INSTALLATION_COMPLETED_TITLE')} type="success">
+          {i18n('INSTALLATION_COMPLETED_DESCRIPTION')}
+        </Message>
+      </div>
+    );
+  }
 }
 
 export default InstallCompleted;
