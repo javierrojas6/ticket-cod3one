@@ -8,6 +8,7 @@ import API from 'lib-app/api-call';
 import SessionActions from 'actions/session-actions';
 
 import PasswordRecovery from 'app-components/password-recovery.js';
+import AuthBrand from 'app-components/auth-brand';
 import Button from 'core-components/button';
 import Form from 'core-components/form';
 import FormField from 'core-components/form-field';
@@ -55,9 +56,7 @@ class AdminLoginPage extends React.Component {
     return (
       <div>
         <Widget className="admin-login-page__content">
-          <div className="admin-login-page__image">
-            <img width="100%" src={API.getURL() + '/images/logo.png'} alt="OpenSupports Admin Panel" />
-          </div>
+          <AuthBrand className="admin-login-page__brand" />
           <div className="admin-login-page__login-form-container">
             <Form {...this.getLoginFormProps()}>
               <div className="admin-login-page__login-form-container__login-form__fields">
@@ -118,6 +117,7 @@ class AdminLoginPage extends React.Component {
     return (
       <div className="admin-login-page__recovery-form-container">
         <PasswordRecovery
+          className="admin-login-page__recovery-content"
           recoverSent={this.state.recoverSent}
           formProps={this.getRecoverFormProps()}
           onBackToLoginClick={this.onBackToLoginClick.bind(this)}

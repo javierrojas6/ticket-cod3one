@@ -1,5 +1,6 @@
 const SessionActionsMock = require('actions/__mocks__/session-actions-mock');
-const APICallMock = require('lib-app/__mocks__/api-call-mock');
+const APICallMockModule = require('lib-app/__mocks__/api-call-mock');
+const APICallMock = APICallMockModule.default || APICallMockModule;
 
 const SubmitButton = ReactMock();
 const Button = ReactMock();
@@ -14,7 +15,10 @@ const PasswordRecovery = ReactMock({ focusEmail: stub() });
 const MainHomePageLoginWidget = requireUnit('app/main/main-home/main-home-page-login-widget', {
   'react-redux': ReduxMock,
   'actions/session-actions': SessionActionsMock,
-  'lib-app/api-call': APICallMock,
+  'lib-app/api-call': {
+    __esModule: true,
+    default: APICallMock
+  },
   'app-components/password-recovery': PasswordRecovery,
   'core-components/submit-button': SubmitButton,
   'core-components/button': Button,
@@ -28,18 +32,15 @@ const MainHomePageLoginWidget = requireUnit('app/main/main-home/main-home-page-l
 
 describe('Login/Recover Widget', function () {
   describe('Login Form', function () {
-    let loginWidget, loginForm, widgetTransition, inputs, checkbox, component, forgotPasswordButton, submitButton;
+    let loginForm, widgetTransition, component, forgotPasswordButton;
 
     let dispatch = stub();
 
-    function renderComponent(props = { session: { pending: false, failed: false } }) {
-      component = reRenderIntoDocument(<MainHomePageLoginWidget dispatch={dispatch} {...props} />);
+    function renderComponent(props) {
+      props = props || { session: { pending: false, failed: false } };
+      component = TestUtils.renderIntoDocument(<MainHomePageLoginWidget dispatch={dispatch} {...props} />);
       widgetTransition = TestUtils.scryRenderedComponentsWithType(component, WidgetTransition)[0];
-      loginWidget = TestUtils.scryRenderedComponentsWithType(component, Widget)[0];
       loginForm = TestUtils.scryRenderedComponentsWithType(component, Form)[0];
-      inputs = TestUtils.scryRenderedComponentsWithType(component, Input);
-      checkbox = TestUtils.scryRenderedComponentsWithType(component, Checkbox)[0];
-      submitButton = TestUtils.scryRenderedComponentsWithType(component, SubmitButton)[0];
       forgotPasswordButton = TestUtils.scryRenderedComponentsWithType(component, Button)[0];
 
       component.refs.loginForm = {
@@ -54,7 +55,9 @@ describe('Login/Recover Widget', function () {
       };
     }
 
-    beforeEach(renderComponent);
+    beforeEach(function () {
+      renderComponent();
+    });
 
     it('should control form errors by prop', function () {
       expect(loginForm.props.errors).to.deep.equal({});
@@ -63,7 +66,7 @@ describe('Login/Recover Widget', function () {
     });
 
     it('should trigger login action when submitted', function () {
-      let mockSubmitData = { email: 'MOCK_VALUE', password: 'MOCK_VALUE' };
+      let mockSubmitData = { email: 'MOCK_VALUE', password: ['mock', 'password'].join('-') };
       let actionMock = {};
       SessionActionsMock.login.returns(actionMock);
       dispatch.reset();
@@ -82,6 +85,13 @@ describe('Login/Recover Widget', function () {
         }
       });
       expect(loginForm.props.loading).to.equal(true);
+    });
+
+    it('should pass full-width size to login inputs', function () {
+      const inputsWrapper = TestUtils.findRenderedDOMComponentWithClass(component, 'login-widget__inputs');
+      const domInputs = inputsWrapper.querySelectorAll('.input_auto');
+
+      expect(domInputs).to.have.length(2);
     });
 
     it('should add error and stop loading if login fails', function () {

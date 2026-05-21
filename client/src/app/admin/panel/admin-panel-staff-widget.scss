@@ -33,6 +33,18 @@
     left: 50%;
     transform: translate(-50%, 0);
     z-index: 1;
+
+    &--brand-fallback {
+      background: linear-gradient(
+        145deg,
+        rgba(255, 250, 248, 0.98),
+        rgba(255, 238, 233, 0.96)
+      );
+      border-color: rgba(255, 255, 255, 0.72);
+      box-shadow:
+        0 14px 28px rgba(2, 8, 23, 0.18),
+        inset 0 0 0 1px rgba(255, 37, 1, 0.08);
+    }
   }
 
   &__profile-pic {
@@ -40,6 +52,14 @@
     position: absolute;
     left: 50%;
     transform: translate(-50%, 0);
+
+    &--brand-fallback {
+      width: 72%;
+      height: 72%;
+      top: 14%;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 16px rgba(255, 37, 1, 0.14));
+    }
   }
 
   &__user-data {

@@ -33,6 +33,13 @@
       height: 100%;
       left: 50%;
       transform: translate(-50%, 0);
+
+      &--brand-fallback {
+        width: 72%;
+        height: 72%;
+        top: 14%;
+        object-fit: contain;
+      }
     }
   }
 

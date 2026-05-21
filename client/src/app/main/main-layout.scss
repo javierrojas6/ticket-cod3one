@@ -5,7 +5,7 @@
   background-color: transparent;
   max-width: 1240px;
   border-radius: $ui-radius-2xl;
-  transition: max-height 0.15s ease-out;
+  transition: max-height $ui-motion-fast $ui-ease-standard;
   animation: $ui-animation-entrance;
 
   .main-layout-header__languages > .drop-down__current-item {

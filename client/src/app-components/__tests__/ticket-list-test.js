@@ -58,6 +58,10 @@ describe('TicketList component', function () {
   })();
 
   function renderTicketList(props = {}) {
+    if (!globalThis.location && globalThis.window) {
+      globalThis.location = globalThis.window.location;
+    }
+
     ticketList = TestUtils.renderIntoDocument(<TicketList tickets={tickets} {...props}></TicketList>);
 
     table = TestUtils.scryRenderedComponentsWithType(ticketList, Table);
@@ -71,19 +75,23 @@ describe('TicketList component', function () {
     expect(table[0].props.headers[0]).to.deep.equal({
       key: 'number',
       value: i18n('NUMBER'),
+      label: i18n('NUMBER'),
       className: 'ticket-list__number col-md-1'
     });
     expect(table[0].props.headers[1]).to.deep.equal({
       key: 'title',
       value: i18n('TITLE'),
+      label: i18n('TITLE'),
       className: 'ticket-list__title col-md-6'
     });
     expect(table[0].props.headers[2]).to.deep.equal({
       key: 'department',
       value: i18n('DEPARTMENT'),
+      label: i18n('DEPARTMENT'),
       className: 'ticket-list__department col-md-3'
     });
     expect(table[0].props.headers[3].key).to.equal('date');
+    expect(table[0].props.headers[3].label).to.equal(i18n('DATE'));
     expect(table[0].props.headers[3].value.props.children[0]).to.equal(i18n('DATE'));
     expect(table[0].props.headers[3].value.props.children[1]).to.equal(null);
     expect(table[0].props.headers[3].className).to.equal('ticket-list__date col-md-2');
@@ -109,24 +117,29 @@ describe('TicketList component', function () {
       expect(table[0].props.headers[0]).to.deep.equal({
         key: 'number',
         value: i18n('NUMBER'),
+        label: i18n('NUMBER'),
         className: 'ticket-list__number col-md-1'
       });
       expect(table[0].props.headers[1]).to.deep.equal({
         key: 'title',
         value: i18n('TITLE'),
+        label: i18n('TITLE'),
         className: 'ticket-list__title col-md-4'
       });
       expect(table[0].props.headers[2]).to.deep.equal({
         key: 'department',
         value: i18n('DEPARTMENT'),
+        label: i18n('DEPARTMENT'),
         className: 'ticket-list__department col-md-2'
       });
       expect(table[0].props.headers[3]).to.deep.equal({
         key: 'author',
         value: i18n('AUTHOR'),
+        label: i18n('AUTHOR'),
         className: 'ticket-list__author col-md-2'
       });
       expect(table[0].props.headers[4].key).to.equal('date');
+      expect(table[0].props.headers[4].label).to.equal(i18n('DATE'));
       expect(table[0].props.headers[4].value.props.children[0]).to.equal(i18n('DATE'));
       expect(table[0].props.headers[4].value.props.children[1]).to.equal(null);
       expect(table[0].props.headers[4].className).to.equal('ticket-list__date col-md-2');

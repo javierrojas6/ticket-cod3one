@@ -69,6 +69,7 @@ class MainHomePageLoginWidget extends React.Component {
               name="email"
               className="login-widget__input"
               validation="EMAIL"
+              fieldProps={{ size: 'auto' }}
               required
             />
             <FormField
@@ -76,7 +77,7 @@ class MainHomePageLoginWidget extends React.Component {
               name="password"
               className="login-widget__input"
               required
-              fieldProps={{ password: true }}
+              fieldProps={{ password: true, size: 'auto' }}
             />
             <FormField name="remember" label={i18n('REMEMBER_ME')} className="login-widget__input" field="checkbox" />
           </div>

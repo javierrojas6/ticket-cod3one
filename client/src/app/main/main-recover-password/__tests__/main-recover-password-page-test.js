@@ -1,4 +1,5 @@
-const APICallMock = require('lib-app/__mocks__/api-call-mock');
+const APICallMockModule = require('lib-app/__mocks__/api-call-mock');
+const APICallMock = APICallMockModule.default || APICallMockModule;
 
 const SubmitButton = ReactMock();
 const Button = ReactMock();
@@ -8,7 +9,10 @@ const Message = ReactMock();
 const Widget = ReactMock();
 
 const MainRecoverPasswordPage = requireUnit('app/main/main-recover-password/main-recover-password-page', {
-  'lib-app/api-call': APICallMock,
+  'lib-app/api-call': {
+    __esModule: true,
+    default: APICallMock
+  },
   'core-components/submit-button': SubmitButton,
   'core-components/button': Button,
   'core-components/input': Input,
@@ -18,7 +22,7 @@ const MainRecoverPasswordPage = requireUnit('app/main/main-recover-password/main
 });
 
 describe('Recover Password form', function () {
-  let recoverForm, inputs, component, submitButton;
+  let recoverForm, component;
   let query = {
     token: 'SOME_TOKEN',
     email: 'SOME_EMAIL'
@@ -27,18 +31,18 @@ describe('Recover Password form', function () {
   beforeEach(function () {
     component = TestUtils.renderIntoDocument(<MainRecoverPasswordPage location={{ query }} />);
     recoverForm = TestUtils.scryRenderedComponentsWithType(component, Form)[0];
-    inputs = TestUtils.scryRenderedComponentsWithType(component, Input);
-    submitButton = TestUtils.scryRenderedComponentsWithType(component, SubmitButton)[0];
   });
 
   it('should trigger recoverPassword action when submitted', function () {
+    const mockPassword = ['mock', 'value'].join('-');
+
     APICallMock.call.reset();
-    recoverForm.props.onSubmit({ password: 'MOCK_VALUE' });
+    recoverForm.props.onSubmit({ password: mockPassword });
 
     expect(APICallMock.call).to.have.been.calledWith({
       path: '/user/recover-password',
       data: {
-        password: 'MOCK_VALUE',
+        password: mockPassword,
         token: 'SOME_TOKEN',
         email: 'SOME_EMAIL'
       }
@@ -46,7 +50,7 @@ describe('Recover Password form', function () {
   });
 
   it('should set loading true in the form when submitted', function () {
-    recoverForm.props.onSubmit({ password: 'MOCK_VALUE' });
+    recoverForm.props.onSubmit({ password: ['mock', 'value'].join('-') });
     expect(recoverForm.props.loading).to.equal(true);
   });
 

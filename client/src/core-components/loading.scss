@@ -21,8 +21,8 @@ $color: $ui-color-text-primary;
     -webkit-transform: translateZ(0);
     -ms-transform: translateZ(0);
     transform: translateZ(0);
-    -webkit-animation: turnAnimation 1.1s infinite linear;
-    animation: turnAnimation 1.1s infinite linear;
+    -webkit-animation: $ui-animation-spinner;
+    animation: $ui-animation-spinner;
 
     &,
     &:after {

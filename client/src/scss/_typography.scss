@@ -1,27 +1,30 @@
 p {
   margin-bottom: 1em;
+  font-family: $ui-font-family-display;
+  color: $ui-color-text-primary;
+  letter-spacing: 0.03em;
 }
 
 %heading-large {
-  font-size: $font-size--lg;
+  font-weight: 700;
   font-weight: bold;
   line-height: $half-space * 3 / 2;
 }
 
 %heading-medium {
-  font-size: $font-size--md;
+  font-weight: 600;
   font-weight: normal;
   line-height: $half-space;
 }
 
 %heading-small {
-  font-size: $font-size--sm;
+  font-weight: 600;
   font-weight: bold;
   line-height: $half-space * 2 / 3;
 }
 
 .heading {
-  margin-bottom: 0.618em;
+  font-weight: 600;
 
   &.-large {
     @extend %heading-large;

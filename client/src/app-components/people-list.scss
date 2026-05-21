@@ -28,6 +28,16 @@
       overflow: hidden;
       position: absolute;
       border: 2px solid $ui-color-border-soft;
+
+      &--brand-fallback {
+        background: linear-gradient(
+          145deg,
+          rgba(255, 249, 247, 0.98),
+          rgba(255, 236, 231, 0.96)
+        );
+        border-color: rgba(255, 255, 255, 0.42);
+        box-shadow: inset 0 0 0 1px rgba(255, 37, 1, 0.08);
+      }
     }
 
     &-profile-pic {
@@ -35,6 +45,14 @@
       height: 100%;
       left: 50%;
       transform: translate(-50%, 0);
+
+      &--brand-fallback {
+        width: 72%;
+        height: 72%;
+        top: 14%;
+        object-fit: contain;
+        filter: drop-shadow(0 6px 12px rgba(255, 37, 1, 0.14));
+      }
     }
 
     &-block {

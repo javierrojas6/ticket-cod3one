@@ -1,7 +1,17 @@
 .main-home-page {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+
   &__center {
     display: flex;
     justify-content: center;
+  }
+
+  &__login-widget,
+  &__portal-wrapper,
+  &__center {
+    display: flex;
   }
 
   &__message {
@@ -14,5 +24,15 @@
     margin: 10px auto 20px;
     height: 78px;
     width: 304px;
+  }
+
+  @media screen and (max-width: 992px) {
+    display: block;
+
+    &__login-widget,
+    &__portal-wrapper,
+    &__center {
+      display: block;
+    }
   }
 }

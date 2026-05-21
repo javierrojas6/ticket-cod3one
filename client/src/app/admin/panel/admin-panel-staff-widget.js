@@ -23,13 +23,21 @@ class AdminPanelStaffWidget extends React.Component {
             </Button>
           </div>
         </div>
-        <div className="admin-panel-staff-widget__profile-pic-wrapper">
+        <div
+          className={classNames('admin-panel-staff-widget__profile-pic-wrapper', {
+            'admin-panel-staff-widget__profile-pic-wrapper--brand-fallback': !this.props.session.userProfilePic
+          })}>
           <img
-            className="admin-panel-staff-widget__profile-pic"
+            className={
+              this.props.session.userProfilePic
+                ? 'admin-panel-staff-widget__profile-pic'
+                : 'admin-panel-staff-widget__profile-pic admin-panel-staff-widget__profile-pic--brand-fallback'
+            }
+            alt=""
             src={
               this.props.session.userProfilePic
                 ? API.getFileLink(this.props.session.userProfilePic)
-                : API.getURL() + '/images/profile.png'
+                : API.getURL() + '/images/logo.png'
             }
           />
         </div>

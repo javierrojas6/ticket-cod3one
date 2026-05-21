@@ -128,11 +128,16 @@ class StaffEditor extends React.Component {
                   </div>
                 </div>
               </div>
-              <label className={this.getPictureWrapperClass()}>
+              <label className={this.getPictureWrapperClass(!profilePic)}>
                 <div className="staff-editor__card-pic-background"></div>
                 <img
-                  className="staff-editor__card-pic"
-                  src={profilePic ? API.getFileLink(profilePic) : API.getURL() + '/images/profile.png'}
+                  className={
+                    profilePic
+                      ? 'staff-editor__card-pic'
+                      : 'staff-editor__card-pic staff-editor__card-pic--brand-fallback'
+                  }
+                  src={profilePic ? API.getFileLink(profilePic) : API.getURL() + '/images/logo.png'}
+                  alt=""
                 />
                 {loadingPicture ? (
                   <Loading className="staff-editor__card-pic-loading" size="large" />
@@ -436,10 +441,11 @@ class StaffEditor extends React.Component {
     );
   }
 
-  getPictureWrapperClass() {
+  getPictureWrapperClass(isDefaultProfilePic) {
     let classes = {
       'staff-editor__card-pic-wrapper': true,
-      'staff-editor__card-pic-wrapper_loading': this.state.loadingPicture
+      'staff-editor__card-pic-wrapper_loading': this.state.loadingPicture,
+      'staff-editor__card-pic-wrapper--brand-fallback': isDefaultProfilePic
     };
 
     return classNames(classes);

@@ -82,6 +82,12 @@
       width: 25px;
       height: 25px;
       border-radius: 50%;
+
+      &--brand-fallback {
+        padding: 4px;
+        object-fit: contain;
+        background: $ui-gradient-button-primary;
+      }
     }
 
     &__name {
@@ -103,6 +109,12 @@
       height: 25px;
       border-radius: 50%;
       margin-right: 5px;
+
+      &--brand-fallback {
+        padding: 4px;
+        object-fit: contain;
+        background: $ui-gradient-button-primary;
+      }
     }
   }
 }

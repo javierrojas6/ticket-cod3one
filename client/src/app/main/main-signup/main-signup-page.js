@@ -6,7 +6,7 @@ class MainSignUpPage extends React.Component {
   render() {
     return (
       <div className="main-signup-page">
-        <MainSignUpWidget className="col-md-6 col-md-offset-3" />
+        <MainSignUpWidget className="main-signup-page__widget" />
       </div>
     );
   }

@@ -22,6 +22,14 @@
       left: 50%;
       transform: translate(-50%, 0);
 
+      &--brand-fallback {
+        width: 72%;
+        height: 72%;
+        top: 14%;
+        object-fit: contain;
+        filter: drop-shadow(0 10px 18px rgba(255, 37, 1, 0.14));
+      }
+
       &-background {
         background-color: $ui-color-surface-strong;
         opacity: 0;
@@ -58,6 +66,18 @@
         left: 50%;
         transform: translate(-50%, 0);
         opacity: 1;
+
+        &--brand-fallback {
+          background: linear-gradient(
+            145deg,
+            rgba(255, 249, 247, 0.98),
+            rgba(255, 236, 231, 0.96)
+          );
+          border-color: rgba(255, 255, 255, 0.72);
+          box-shadow:
+            0 18px 44px rgba(2, 8, 23, 0.18),
+            inset 0 0 0 1px rgba(255, 37, 1, 0.08);
+        }
 
         &_loading,
         &:hover {

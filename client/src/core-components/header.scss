@@ -6,10 +6,12 @@
 
   &__title {
     margin: 4px 0 10px;
+    font-family: $ui-font-family-display;
     font-size: $ui-font-size-display;
     line-height: 1;
-    letter-spacing: -0.04em;
+    letter-spacing: 0.04em;
     color: $ui-color-text-primary;
+    font-weight: 700;
   }
 
   &__description {

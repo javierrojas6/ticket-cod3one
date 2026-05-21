@@ -3,9 +3,11 @@
 
 // Typography
 $ui-font-family-base:
-  "Segoe UI Variable Text", "Segoe UI", Helvetica, sans-serif;
+  "Inter", "Segoe UI Variable Text", "Segoe UI", Helvetica, sans-serif;
 $ui-font-family-system:
-  "Segoe UI Variable Text", "Segoe UI", Helvetica, Arial, sans-serif;
+  "Inter", "Segoe UI Variable Text", "Segoe UI", Helvetica, Arial, sans-serif;
+$ui-font-family-display:
+  "Rajdhani", "Inter", "Segoe UI Variable Text", "Segoe UI", sans-serif;
 $ui-font-family-code: Menlo, Monaco, Consolas, "Courier New", monospace;
 
 $ui-font-size-caption: $font-size--xs;
@@ -19,67 +21,67 @@ $ui-font-size-display: 40px;
 $ui-font-size-title-compact: 20px;
 
 // Colors
-$ui-color-bg-canvas-start: #08111d;
-$ui-color-bg-canvas-mid: #0d1728;
-$ui-color-bg-canvas-end: #09121f;
-$ui-color-surface-strong: rgba(18, 31, 51, 0.98);
-$ui-color-surface-base: rgba(10, 18, 31, 0.98);
-$ui-color-surface-elevated: rgba(8, 18, 31, 0.98);
-$ui-color-surface-soft: rgba(11, 20, 34, 0.98);
-$ui-color-surface-contrast: rgba(9, 16, 28, 0.98);
+$ui-color-bg-canvas-start: #0c0e11;
+$ui-color-bg-canvas-mid: #11151a;
+$ui-color-bg-canvas-end: #0f1318;
+$ui-color-surface-strong: rgba(28, 32, 40, 0.98);
+$ui-color-surface-base: rgba(19, 22, 25, 0.98);
+$ui-color-surface-elevated: rgba(25, 29, 35, 0.98);
+$ui-color-surface-soft: rgba(32, 37, 46, 0.98);
+$ui-color-surface-contrast: rgba(15, 18, 23, 0.98);
 $ui-color-surface-muted: rgba(255, 255, 255, 0.03);
 $ui-color-surface-muted-hover: rgba(255, 255, 255, 0.05);
-$ui-color-surface-control: rgba(4, 12, 24, 0.72);
-$ui-color-surface-control-focus: rgba(8, 18, 31, 0.92);
-$ui-color-overlay-scrim: rgba(2, 6, 16, 0.78);
+$ui-color-surface-control: rgba(19, 22, 25, 0.88);
+$ui-color-surface-control-focus: rgba(28, 32, 40, 0.98);
+$ui-color-overlay-scrim: rgba(12, 14, 17, 0.82);
 
-$ui-color-text-primary: #f8fafc;
-$ui-color-text-secondary: #dbe5f2;
-$ui-color-text-muted: #cbd5e1;
-$ui-color-text-soft: #94a3b8;
-$ui-color-text-placeholder: #7f8da3;
-$ui-color-text-accent: #8fd6ff;
-$ui-color-text-accent-strong: #dff7ff;
-$ui-color-text-inverse: #07111f;
+$ui-color-text-primary: #edf0f5;
+$ui-color-text-secondary: #c6ced9;
+$ui-color-text-muted: #8c96a6;
+$ui-color-text-soft: #718096;
+$ui-color-text-placeholder: #667182;
+$ui-color-text-accent: #ff8f7b;
+$ui-color-text-accent-strong: #ffd0c7;
+$ui-color-text-inverse: #0c0e11;
 
-$ui-color-border-subtle: rgba(255, 255, 255, 0.07);
-$ui-color-border-strong: rgba(255, 255, 255, 0.08);
-$ui-color-border-soft: rgba(255, 255, 255, 0.05);
-$ui-color-border-focus: rgba(143, 214, 255, 0.65);
-$ui-color-border-focus-hover: rgba(143, 214, 255, 0.35);
-$ui-color-border-danger: rgba(255, 125, 141, 0.6);
+$ui-color-border-subtle: rgba(255, 255, 255, 0.06);
+$ui-color-border-strong: rgba(255, 255, 255, 0.1);
+$ui-color-border-soft: rgba(255, 255, 255, 0.04);
+$ui-color-border-focus: rgba(255, 37, 1, 0.42);
+$ui-color-border-focus-hover: rgba(255, 37, 1, 0.24);
+$ui-color-border-danger: rgba(255, 69, 69, 0.36);
 
-$ui-color-accent-primary: #dd5555;
-$ui-color-accent-primary-strong: #a83d46;
-$ui-color-accent-secondary: #89d3a0;
-$ui-color-accent-secondary-strong: #5dae7a;
-$ui-color-accent-tertiary: #20b8c5;
-$ui-color-accent-tertiary-strong: #0e4b5c;
+$ui-color-accent-primary: #ff2501;
+$ui-color-accent-primary-strong: #cc1d00;
+$ui-color-accent-secondary: #718096;
+$ui-color-accent-secondary-strong: #4a5568;
+$ui-color-accent-tertiary: #3a8ee6;
+$ui-color-accent-tertiary-strong: #245f9d;
 
-$ui-color-success-surface: rgba(87, 191, 129, 0.14);
-$ui-color-success-border: rgba(87, 191, 129, 0.24);
-$ui-color-success-text: #d8ffeb;
-$ui-color-success-icon: #9de2b7;
+$ui-color-success-surface: rgba(22, 193, 114, 0.13);
+$ui-color-success-border: rgba(22, 193, 114, 0.24);
+$ui-color-success-text: #b8f6d7;
+$ui-color-success-icon: #6fe1a6;
 
-$ui-color-error-surface: rgba(221, 85, 85, 0.14);
-$ui-color-error-border: rgba(221, 85, 85, 0.22);
-$ui-color-error-text: #ffe0e4;
-$ui-color-error-icon: #ffadb8;
+$ui-color-error-surface: rgba(255, 69, 69, 0.13);
+$ui-color-error-border: rgba(255, 69, 69, 0.22);
+$ui-color-error-text: #ffd4d7;
+$ui-color-error-icon: #ff8d94;
 
-$ui-color-info-surface: rgba(32, 184, 197, 0.12);
-$ui-color-info-border: rgba(32, 184, 197, 0.24);
-$ui-color-info-text: #e0f8ff;
-$ui-color-info-icon: #8fd6ff;
+$ui-color-info-surface: rgba(58, 142, 230, 0.12);
+$ui-color-info-border: rgba(58, 142, 230, 0.24);
+$ui-color-info-text: #dcebff;
+$ui-color-info-icon: #7db6ff;
 
-$ui-color-warning-surface: rgba(252, 185, 0, 0.14);
-$ui-color-warning-border: rgba(252, 185, 0, 0.24);
-$ui-color-warning-text: #fff4cf;
-$ui-color-warning-icon: #fdd978;
-$ui-color-warning-surface-strong: rgba(78, 60, 18, 0.98);
-$ui-color-warning-surface-muted: rgba(120, 94, 27, 0.18);
+$ui-color-warning-surface: rgba(232, 160, 32, 0.13);
+$ui-color-warning-border: rgba(232, 160, 32, 0.22);
+$ui-color-warning-text: #ffe3b0;
+$ui-color-warning-icon: #ffc865;
+$ui-color-warning-surface-strong: rgba(94, 64, 13, 0.96);
+$ui-color-warning-surface-muted: rgba(232, 160, 32, 0.16);
 
-$ui-color-focus-ring: rgba(32, 184, 197, 0.14);
-$ui-color-hover-accent: rgba(32, 184, 197, 0.16);
+$ui-color-focus-ring: rgba(255, 37, 1, 0.14);
+$ui-color-hover-accent: rgba(255, 37, 1, 0.12);
 
 $ui-gradient-app-background: linear-gradient(
   180deg,
@@ -89,8 +91,8 @@ $ui-gradient-app-background: linear-gradient(
 );
 $ui-gradient-surface: linear-gradient(
   180deg,
-  rgba(18, 31, 51, 0.96),
-  rgba(10, 18, 31, 0.96)
+  rgba(28, 32, 40, 0.96),
+  rgba(19, 22, 25, 0.96)
 );
 $ui-gradient-surface-strong: linear-gradient(
   180deg,
@@ -118,39 +120,39 @@ $ui-gradient-button-tertiary: linear-gradient(
   $ui-color-accent-tertiary-strong
 );
 $ui-gradient-accent-strip: linear-gradient(
-  90deg,
-  rgba(19, 186, 213, 0.8),
-  rgba(17, 146, 170, 0.72)
+  135deg,
+  rgba(204, 29, 0, 0.94),
+  rgba(255, 37, 1, 0.88)
 );
 $ui-gradient-accent-panel: linear-gradient(
   90deg,
-  rgba(20, 184, 198, 0.88),
-  rgba(14, 75, 92, 0.82)
+  rgba(204, 29, 0, 0.92),
+  rgba(255, 37, 1, 0.85)
 );
 $ui-gradient-info-panel: linear-gradient(
   135deg,
-  rgba(32, 184, 197, 0.9),
-  rgba(14, 75, 92, 0.88)
+  rgba(58, 142, 230, 0.9),
+  rgba(36, 95, 157, 0.88)
 );
 $ui-gradient-info-strip: linear-gradient(
   180deg,
-  rgba(32, 184, 197, 0.22),
+  rgba(58, 142, 230, 0.2),
   rgba(255, 255, 255, 0.02)
 );
 $ui-gradient-staff-panel: linear-gradient(
   135deg,
-  rgba(24, 78, 119, 0.9),
-  rgba(13, 38, 59, 0.92)
+  rgba(39, 44, 54, 0.95),
+  rgba(19, 22, 25, 0.98)
 );
 $ui-gradient-warning-panel: linear-gradient(
   135deg,
-  rgba(156, 118, 16, 0.95),
-  rgba(107, 74, 12, 0.95)
+  rgba(232, 160, 32, 0.93),
+  rgba(130, 82, 10, 0.95)
 );
 $ui-gradient-warning-surface: linear-gradient(
   180deg,
-  rgba(78, 60, 18, 0.88),
-  rgba(42, 31, 9, 0.92)
+  rgba(94, 64, 13, 0.88),
+  rgba(49, 34, 9, 0.92)
 );
 
 // Spacing
@@ -213,6 +215,7 @@ $ui-motion-fast: 0.2s;
 $ui-motion-normal: 0.3s;
 $ui-motion-entrance: 0.45s;
 $ui-ease-standard: ease;
+$ui-ease-linear: linear;
 $ui-transition-interactive:
   background-color $ui-motion-normal $ui-ease-standard,
   color $ui-motion-normal $ui-ease-standard;
@@ -220,10 +223,12 @@ $ui-transition-expand-fade:
   max-height $ui-motion-fast $ui-ease-standard,
   opacity $ui-motion-fast $ui-ease-standard;
 $ui-animation-entrance: os-fade-up $ui-motion-entrance $ui-ease-standard;
+$ui-animation-spinner: turnAnimation 1.1s infinite $ui-ease-linear;
 
 :root {
   --ui-font-family-base: #{$ui-font-family-base};
   --ui-font-family-system: #{$ui-font-family-system};
+  --ui-font-family-display: #{$ui-font-family-display};
   --ui-font-family-code: #{$ui-font-family-code};
   --ui-color-bg-canvas-start: #{$ui-color-bg-canvas-start};
   --ui-color-bg-canvas-mid: #{$ui-color-bg-canvas-mid};

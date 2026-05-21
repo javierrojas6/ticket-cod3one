@@ -3,10 +3,24 @@
 .card {
   border-radius: $ui-radius-sm;
   color: $ui-color-text-primary;
-  height: 260px;
+  min-height: 260px;
   padding: 15px;
   position: relative;
   box-shadow: $ui-shadow-md;
+  display: flex;
+  flex-direction: column;
+
+  &__icon {
+    min-height: 72px;
+    display: flex;
+    align-items: flex-start;
+    line-height: 1;
+
+    .fa {
+      display: block;
+      line-height: 1;
+    }
+  }
 
   &__title {
     font-variant: small-caps;
@@ -16,13 +30,12 @@
 
   &__description {
     font-size: $font-size--sm;
+    flex: 1 1 auto;
   }
 
   &__button {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 17px;
+    margin-top: auto;
+    padding-top: 17px;
   }
 
   @media (max-width: 1060px) {

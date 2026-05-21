@@ -3,6 +3,10 @@ import API from 'lib-app/api-call';
 import _ from 'lodash';
 
 export default {
+  isDefaultStaffProfilePic(staff) {
+    return !staff.profilePic;
+  },
+
   getStaffList({ staffList, ticket }, type) {
     switch (type) {
       case 'toDropDown': {
@@ -30,13 +34,21 @@ export default {
   },
 
   getStaffProfilePic(staff) {
-    return staff.profilePic ? API.getFileLink(staff.profilePic) : API.getURL() + '/images/profile.png';
+    return staff.profilePic ? API.getFileLink(staff.profilePic) : API.getURL() + '/images/logo.png';
   },
 
   renderStaffOption(staff) {
     return (
       <div className="ticket-query-filters__staff-option" key={`staff-option-${staff.id}`}>
-        <img className="ticket-query-filters__staff-option__profile-pic" src={this.getStaffProfilePic(staff)} />
+        <img
+          className={
+            this.isDefaultStaffProfilePic(staff)
+              ? 'ticket-query-filters__staff-option__profile-pic ticket-query-filters__staff-option__profile-pic--brand-fallback'
+              : 'ticket-query-filters__staff-option__profile-pic'
+          }
+          src={this.getStaffProfilePic(staff)}
+          alt=""
+        />
         <span className="ticket-query-filters__staff-option__name">{staff.name}</span>
       </div>
     );
@@ -45,7 +57,15 @@ export default {
   renderStaffSelected(staff) {
     return (
       <div className="ticket-query-filters__staff-selected" key={`staff-selected-${staff.id}`}>
-        <img className="ticket-query-filters__staff-selected__profile-pic" src={this.getStaffProfilePic(staff)} />
+        <img
+          className={
+            this.isDefaultStaffProfilePic(staff)
+              ? 'ticket-query-filters__staff-selected__profile-pic ticket-query-filters__staff-selected__profile-pic--brand-fallback'
+              : 'ticket-query-filters__staff-selected__profile-pic'
+          }
+          src={this.getStaffProfilePic(staff)}
+          alt=""
+        />
         <span className="ticket-query-filters__staff-selected__name">{staff.name}</span>
       </div>
     );

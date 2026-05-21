@@ -166,13 +166,21 @@ class AdminPanelStats extends React.Component {
 
   getStaffItems() {
     const getStaffProfilePic = (staff) => {
-      return staff.profilePic ? API.getFileLink(staff.profilePic) : API.getURL() + '/images/profile.png';
+      return staff.profilePic ? API.getFileLink(staff.profilePic) : API.getURL() + '/images/logo.png';
     };
 
     const renderStaffItem = (staff, style) => {
       return (
         <div className={`admin-panel-stats__staff-${style}`} key={`staff-${style}-${staff.id}`}>
-          <img className={`admin-panel-stats__staff-${style}__profile-pic`} src={getStaffProfilePic(staff)} />
+          <img
+            className={
+              staff.profilePic
+                ? `admin-panel-stats__staff-${style}__profile-pic`
+                : `admin-panel-stats__staff-${style}__profile-pic admin-panel-stats__staff-${style}__profile-pic--brand-fallback`
+            }
+            src={getStaffProfilePic(staff)}
+            alt=""
+          />
           <span className={`admin-panel-stats__staff-${style}__name`}>{staff.name}</span>
         </div>
       );

@@ -1,5 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
+import classNames from 'classnames';
 import { StaggeredMotion, spring } from 'react-motion';
 import Menu from 'core-components/menu';
 
@@ -11,6 +12,7 @@ class PeopleList extends React.Component {
     list: React.PropTypes.arrayOf(
       React.PropTypes.shape({
         profilePic: React.PropTypes.string,
+        defaultProfilePic: React.PropTypes.bool,
         name: React.PropTypes.node,
         assignedTickets: React.PropTypes.number,
         closedTickets: React.PropTypes.number,
@@ -89,8 +91,17 @@ class PeopleList extends React.Component {
 
     return minIndex <= index && index < maxIndex ? (
       <div className="people-list__item">
-        <div className="people-list__item-profile-pic-wrapper">
-          <img className="people-list__item-profile-pic" src={item.profilePic} />
+        <div
+          className={classNames('people-list__item-profile-pic-wrapper', {
+            'people-list__item-profile-pic-wrapper--brand-fallback': item.defaultProfilePic
+          })}>
+          <img
+            className={classNames('people-list__item-profile-pic', {
+              'people-list__item-profile-pic--brand-fallback': item.defaultProfilePic
+            })}
+            src={item.profilePic}
+            alt=""
+          />
         </div>
         <div className="people-list__item-block people-list__item-name">{item.name}</div>
         <div className="people-list__item-block people-list__item-assigned-tickets">

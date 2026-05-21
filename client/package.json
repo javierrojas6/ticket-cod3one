@@ -1,11 +1,11 @@
 {
-  "name": "OpenSupports",
+  "name": "tick3tone",
   "version": "4.11.0",
-  "author": "Ivan Diaz <contact@opensupports.com>",
+  "author": "Javier Rojas <javierrojas6@gmail.com>",
   "description": "Open source ticket system frontend built with ReactJS",
   "repository": {
     "type": "git",
-    "url": "https://github.com/opensupports/opensupports"
+    "url": "git@github.com:javierrojas6/ticket-cod3one.git"
   },
   "private": false,
   "engines": {
@@ -17,7 +17,8 @@
     "start-fixtures": "cross-env NODE_ENV=development OS_GLOBAL_INDEX_PATH=/app webpack serve --env FIXTURES=1 --progress",
     "format": "prettier --write \"src/**/*.{ts,js,scss,html}\"",
     "build": "cross-env NODE_ENV=production rimraf build && webpack --mode production --devtool false",
-    "test": "cross-env NODE_PATH=src mocha src/lib-test/preprocessor.js --require @babel/register --recursive src/**/**/__tests__/*-test.js"
+    "test": "cross-env NODE_PATH=src mocha src/lib-test/preprocessor.js --require @babel/register --recursive src/**/**/__tests__/*-test.js",
+    "test:coverage": "npx --yes nyc --temp-dir .nyc_output/global-unit-coverage-clean --report-dir coverage/global-unit-coverage-clean --reporter=text-summary --reporter=json-summary --reporter=lcov npm test"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",

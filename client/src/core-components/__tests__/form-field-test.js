@@ -21,7 +21,7 @@ describe('FormField component', function () {
       textarea: TextEditorMock
     };
 
-    component = reRenderIntoDocument(<FormField {...props} />);
+    component = TestUtils.renderIntoDocument(<FormField {...props} />);
     innerField = TestUtils.scryRenderedComponentsWithType(component, fields[props.field])[0];
   }
 

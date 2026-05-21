@@ -6,7 +6,7 @@
     align-items: center;
     &__show-filters-button {
       position: relative;
-      transition: all 0.4s ease;
+      transition: all $ui-motion-normal $ui-ease-standard;
     }
   }
 }

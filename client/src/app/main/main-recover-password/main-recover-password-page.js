@@ -10,6 +10,7 @@ import Form from 'core-components/form';
 import FormField from 'core-components/form-field';
 import SubmitButton from 'core-components/submit-button';
 import Message from 'core-components/message';
+import AuthBrand from 'app-components/auth-brand';
 
 class MainRecoverPasswordPage extends React.Component {
   static propTypes = {
@@ -30,6 +31,7 @@ class MainRecoverPasswordPage extends React.Component {
   render() {
     return (
       <div className="main-recover-password-page">
+        <AuthBrand className="main-recover-password-page__brand" />
         <Widget
           title={this.props.location.query.invited ? i18n('SET_UP_PASSWORD') : i18n('RECOVER_PASSWORD')}
           className="col-md-4 col-md-offset-4">

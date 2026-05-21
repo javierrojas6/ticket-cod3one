@@ -53,12 +53,18 @@ class TicketEvent extends React.Component {
 
   renderStaffPic() {
     let profilePicName = this.props.author.profilePic;
+    const isFallbackLogo = !profilePicName;
 
     return (
       <div className="ticket-event__staff-pic">
         <img
-          src={profilePicName ? API.getFileLink(profilePicName) : API.getURL() + '/images/profile.png'}
-          className="ticket-event__staff-pic-img"
+          src={profilePicName ? API.getFileLink(profilePicName) : API.getURL() + '/images/logo.png'}
+          className={
+            isFallbackLogo
+              ? 'ticket-event__staff-pic-img ticket-event__staff-pic-img--brand-fallback'
+              : 'ticket-event__staff-pic-img'
+          }
+          alt=""
         />
       </div>
     );

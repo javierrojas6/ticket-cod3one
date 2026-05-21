@@ -45,7 +45,15 @@ class MentionsParser {
         return segment;
       case PARSING_MENTION:
         if (segment.length == 6)
-          return '<a href="' + runtimeConfig.getRoot() + '/admin/panel/tickets/view-ticket/' + segment + '">#' + segment + '</a>';
+          return (
+            '<a href="' +
+            runtimeConfig.getRoot() +
+            '/admin/panel/tickets/view-ticket/' +
+            segment +
+            '">#' +
+            segment +
+            '</a>'
+          );
         else return '#' + segment;
       default:
         return '';

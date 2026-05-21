@@ -136,7 +136,7 @@ describe('Form component', function () {
 
     it('should still working if the error prop changes', function () {
       function setErrorsOrRender(errors = {}) {
-        form = reRenderIntoDocument(
+        form = TestUtils.renderIntoDocument(
           <Form errors={errors}>
             <div>
               <FormField name="first" value="value1" required />

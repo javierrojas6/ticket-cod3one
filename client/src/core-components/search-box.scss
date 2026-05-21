@@ -16,8 +16,12 @@
 
   &__icon {
     position: absolute;
-    top: 13px;
+    top: 50%;
     left: 20px;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: $ui-color-text-accent;
     pointer-events: none;
   }
