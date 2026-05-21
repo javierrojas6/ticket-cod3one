@@ -1,6 +1,10 @@
 .admin-panel-menu {
+  border-radius: $ui-radius-xl;
+  overflow: hidden;
+  box-shadow: $ui-shadow-lg;
+  animation: $ui-animation-entrance;
 
-    &__item-text {
-        display: inline-flex;
-    }
+  &__item-text {
+    display: inline-flex;
+  }
 }

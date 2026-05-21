@@ -1,42 +1,58 @@
 @import "../scss/vars";
 
 .form-field {
+  display: block;
+  margin-bottom: 22px;
+  position: relative;
+
+  &__label {
+    color: $ui-color-text-secondary;
+    font-size: $ui-font-size-label;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
     display: block;
-    margin-bottom: 20px;
+    padding: 0 0 8px;
+    text-align: left;
+  }
 
-    &__label {
-        color: $primary-black;
-        font-size: 15px;
-        display: block;
-        padding: 3px 0;
-        text-align: left;
+  &__info {
+    position: relative;
+    top: -1px;
+    left: 5px;
+  }
+
+  &_errored {
+    .form-field__error {
+      color: $ui-color-error-icon;
+      font-size: $font-size--xs;
+      display: block;
+      margin-top: 6px;
+      text-align: left;
     }
 
-    &__info {
-        position: relative;
-        top: -1px;
-        left: 5px;
+    .input__text,
+    .text-editor__editor,
+    .drop-down__current-item {
+      border-color: $ui-color-border-danger;
+      box-shadow: 0 0 0 3px $ui-color-error-surface;
     }
+  }
 
-    &_errored {
-        .form-field__error {
-            color: $primary-red;
-            font-size: $font-size--xs;
-            display: block;
-            position: absolute;
-        }
+  &_checkbox {
+    display: inline-block;
+    margin-bottom: 0;
+
+    .form-field__label {
+      display: inline-block;
+
+      margin-left: 10px;
+      font-size: $ui-font-size-body;
+      font-weight: 500;
+      letter-spacing: 0;
+      text-transform: none;
+      user-select: none;
+      padding-bottom: 0;
     }
-
-    &_checkbox {
-        display: inline-block;
-        margin-bottom: 0;
-
-        .form-field__label {
-            display: inline-block;
-
-            margin-left: 10px;
-            font-size: 14px;
-            user-select: none;
-        }
-    }
+  }
 }

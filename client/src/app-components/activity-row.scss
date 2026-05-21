@@ -1,26 +1,70 @@
 @import "../scss/vars";
 
 .activity-row {
-    text-align: left;
-    font-size: $font-size--sm;
+  text-align: left;
+  font-size: $font-size--sm;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  border-radius: $ui-radius-lg;
+  background: $ui-color-surface-strong;
+  border: 1px solid $ui-color-border-strong;
+  color: $ui-color-text-primary;
+  transition:
+    background-color $ui-motion-fast $ui-ease-standard,
+    transform $ui-motion-fast $ui-ease-standard;
 
-    &__icon {
-        margin: 0 10px;
-    }
+  &:hover {
+    background: $ui-color-surface-muted-hover;
+    @include ui-hover-lift();
+  }
 
-    &__name-link {
+  &__icon {
+    margin: 0;
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $ui-radius-sm;
+    background: $ui-color-surface-elevated;
+    color: $ui-color-text-primary;
+  }
 
-    }
+  &__name-link {
+    color: $ui-color-text-primary;
+    font-weight: 600;
+  }
 
-    &__message {
+  &__message {
+    color: $ui-color-text-secondary;
+  }
 
-    }
+  &__ticket-link {
+    color: $ui-color-text-accent;
+    font-weight: 600;
+  }
 
-    &__ticket-link {
+  .separator {
+    margin-left: auto;
+    width: 10px;
+    height: 10px;
+    border-radius: $ui-radius-pill;
+    background: $ui-color-info-border;
+  }
 
-    }
+  a:hover,
+  a:focus {
+    color: $ui-color-text-accent-strong;
+    text-decoration: underline;
+  }
+
+  @media screen and (max-width: 640px) {
+    flex-wrap: wrap;
 
     .separator {
-        margin: 15px;
+      display: none;
     }
+  }
 }

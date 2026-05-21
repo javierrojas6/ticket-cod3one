@@ -1,23 +1,23 @@
 // COLORS
-$primary-red: #DD5555;
-$secondary-red: #FB6362;
+$primary-red: #ff2501;
+$secondary-red: #cc1d00;
 
-$primary-blue: #414A59;
-$secondary-blue: #20B8c5;
+$primary-blue: #191d23;
+$secondary-blue: #3a8ee6;
 
-$primary-yellow: #E5D151;
-$light-yellow: #fff19c;
-$very-light-yellow: #ffffe0;
+$primary-yellow: #e8a020;
+$light-yellow: #ffd992;
+$very-light-yellow: #fff3da;
 
-$primary-green: #82CA9C;
+$primary-green: #16c172;
 
-$very-light-grey: #F7F7F7;
-$light-grey: #EEEEEE;
-$grey: #E7E7E7;
-$medium-grey: #D9D9D9;
-$dark-grey: #8D8D8D;
+$very-light-grey: #131619;
+$light-grey: #191d23;
+$grey: #20252e;
+$medium-grey: #2a303a;
+$dark-grey: #8c96a6;
 
-$primary-black: #4D4D4D;
+$primary-black: #edf0f5;
 
 // SPACING
 $full-space: 40px;
@@ -32,34 +32,36 @@ $font-size--lg: 24px;
 $font-size--xl: 32px;
 
 @mixin scrollbars() {
-    $size: .4em;
-    $color: $grey;
+  $size: 0.4em;
+  $color: $grey;
 
+  &::-webkit-scrollbar {
+    width: $size;
+    height: $size;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &:hover {
     &::-webkit-scrollbar {
-        width:  $size;
-        height: $size;
+      width: $size;
+      height: $size;
     }
 
     &::-webkit-scrollbar-thumb {
-        background: transparent;
+      background: $color;
     }
 
     &::-webkit-scrollbar-track {
-        background: transparent;
+      background: lighten($color, 50%);
     }
-
-    &:hover {
-        &::-webkit-scrollbar {
-            width:  $size;
-            height: $size;
-        }
-
-        &::-webkit-scrollbar-thumb {
-            background: $color;
-        }
-
-        &::-webkit-scrollbar-track {
-            background: lighten($color, 50%);
-        }
-    }
+  }
 }
+
+@import "theme";

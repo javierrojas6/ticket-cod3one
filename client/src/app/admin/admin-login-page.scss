@@ -1,40 +1,117 @@
-@import '../../scss/vars';
+@import "../../scss/vars";
 
 .admin-login-page {
-    display: flex;
+  $auth-form-max-width: 350px;
+  $auth-card-min-height: 620px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  min-height: calc(100vh - 80px);
+  width: 100%;
+  padding: $ui-layout-auth-page-padding;
+
+  &__container {
+    width: 100%;
+    max-width: 460px;
+    min-height: $auth-card-min-height;
+  }
+
+  &__content {
     margin: 0 auto;
-    width: 446px;
-    
+    padding: 30px;
+    width: 100%;
+    text-align: center;
+  }
+
+  &__brand {
+    margin: 0 auto 26px;
+  }
+
+  &__recovery-form-container {
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  &__recovery-content {
+    .admin-login-page__recovery-form-container__recovery-form,
+    .password-recovery__submit-button,
+    .password-recovery__forgot-password,
+    .password-recovery__message {
+      margin-left: auto;
+      margin-right: auto;
+      width: 100%;
+      max-width: $auth-form-max-width;
+    }
+
+    .password-recovery__submit-button {
+      .submit-button,
+      .button {
+        width: 100%;
+      }
+    }
+  }
+
+  &__login-form-container {
+    margin: 0 auto;
+    display: block;
+    width: 100%;
+    max-width: $auth-form-max-width;
+
+    &__login-form__fields {
+      padding: 6px 0 2px;
+      text-align: left;
+    }
+
+    &__login-form__submit-button {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  &__error {
+    max-width: $auth-form-max-width;
+    margin: 22px auto 0;
+    text-align: left;
+  }
+
+  &__message {
+    max-width: $auth-form-max-width;
+    margin: 18px auto 0;
+    text-align: left;
+  }
+
+  &__captcha {
+    margin: 10px auto 20px;
+    height: 78px;
+    width: 304px;
+  }
+
+  .login-widget__forgot-password {
+    display: block;
+    margin-top: 18px;
+    text-align: center;
+  }
+
+  @media screen and (max-width: 640px) {
+    min-height: auto;
+    padding: $ui-layout-auth-page-padding-mobile;
+
     &__container {
-        height: 361px;
+      min-height: 0;
     }
 
     &__content {
-        margin: 0 auto;
-        padding: 40px;
+      padding: $ui-space-inset-xl;
     }
 
-    &__image {
-        width: 365px;
-        margin-bottom: 30px;
-    }
-
-    &__login-form-container {
-        margin: 0 auto;
-        display: inline-block;
-
-        &__login-form__fields {
-            padding: 10px 0;
-        }
-    }
-
-    &__error {
-        margin-top: 30px;
-    }
-    
     &__captcha {
-        margin: 10px auto 20px;
-        height: 78px;
-        width: 304px;
+      width: 100%;
+      transform: scale(0.92);
+      transform-origin: center top;
+      margin-bottom: 6px;
     }
+  }
 }

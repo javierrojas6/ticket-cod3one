@@ -1,8 +1,7 @@
 .admin-panel-custom-tags-modal {
-
-    &__actions{
-        display: flex;
-        flex-direction: row-reverse;
-        justify-content: space-between;
-    }
+  &__actions {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
 }

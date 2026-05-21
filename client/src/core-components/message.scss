@@ -1,121 +1,104 @@
 @import "../scss/vars";
 
 .message {
-    padding: 10px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
+  padding: $ui-space-inset-md;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  border-radius: $ui-radius-lg;
+  border: 1px solid transparent;
 
-    &__icon {
-        position: absolute;
-        top: 13px;
-        left: 13px;
+  &__icon {
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    transform: translateY(-50%);
+    line-height: 1;
+  }
+
+  &__title {
+    color: $ui-color-text-primary;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  &__content {
+    color: $ui-color-text-secondary;
+    padding-left: 30px;
+  }
+
+  &_success {
+    @include ui-status-surface(
+      $ui-color-success-surface,
+      $ui-color-success-border,
+      $ui-color-success-text,
+      $ui-color-success-icon
+    );
+  }
+
+  &_error {
+    @include ui-status-surface(
+      $ui-color-error-surface,
+      $ui-color-error-border,
+      $ui-color-error-text,
+      $ui-color-error-icon
+    );
+  }
+
+  &_info {
+    @include ui-status-surface(
+      $ui-color-info-surface,
+      $ui-color-info-border,
+      $ui-color-info-text,
+      $ui-color-info-icon
+    );
+  }
+
+  &_warning {
+    @include ui-status-surface(
+      $ui-color-warning-surface,
+      $ui-color-warning-border,
+      $ui-color-warning-text,
+      $ui-color-warning-icon
+    );
+  }
+
+  &_with-title {
+    text-align: left;
+
+    .message__icon {
+      position: initial;
+      transform: none;
+      float: left;
+      margin-top: 7px;
+      margin-right: 20px;
     }
 
-    &__title {
-
+    .message__title {
+      font-size: $ui-font-size-title;
+      font-weight: bold;
     }
 
-    &__content {
-        color: white;
+    .message__content {
+      font-size: $ui-font-size-body;
+      overflow: auto;
     }
+  }
 
-    &_success {
-        background-color: #d8f7b3;
-
-        .message__icon {
-            color: #189e1e;
-        }
-
-        .message__title {
-            color: $primary-blue;
-        }
-
-        .message__content {
-            color: $primary-blue;
-        }
+  &_left-aligned {
+    .message__content {
+      text-align: left;
+      padding-left: 28px;
     }
+  }
 
-    &_error {
-        background-color: #ffb4b4;
-
-        .message__icon {
-            color: red;
-        }
-
-        .message__title {
-            color: #bb4242;
-        }
-
-        .message__content {
-            color: white;
-        }
-    }
-
-    &_info {
-        background-color: #ceefff;
-
-        .message__icon {
-            color: #4c80ff;
-        }
-
-        .message__title {
-            color: $primary-blue;
-        }
-
-        .message__content {
-            color: $primary-blue;
-        }
-    }
-
-    &_warning {
-        background-color: #fcb90063;
-
-        .message__icon {
-            color: #fcb900;
-        }
-
-        .message__title {
-            color: $primary-blue;
-        }
-
-        .message__content {
-            color: $primary-blue;
-        }
-    }
-
-    &_with-title {
-        text-align: left;
-
-        .message__icon {
-            position: initial;
-            float: left;
-            margin-top: 7px;
-            margin-right: 20px;
-        }
-
-        .message__title {
-            font-size: $font-size--md;
-            font-weight: bold;
-        }
-
-        .message__content {
-            font-size: $font-size--sm;
-            overflow: auto;
-        }
-    }
-
-    &_left-aligned {
-        .message__content {
-            text-align: left;
-            padding-left: 28px;
-        }
-    }
-
-    &__close-icon {
-        cursor: pointer;
-        position: absolute;
-        top: 5px;
-        right: 10px;
-    }
+  &__close-icon {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    color: $ui-color-text-secondary;
+    line-height: 1;
+  }
 }

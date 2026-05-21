@@ -24,13 +24,8 @@ updateJSONVersion(`${WORKDIR}/server/apidoc.json`);
 // Replace in places
 replace({
   files: `${WORKDIR}/client/src/config.js`,
-  from: `opensupports_version = '${OLD_VERSION}';`,
-  to: `opensupports_version = '${NEW_VERSION}';`
-});
-replace({
-  files: `${WORKDIR}/client/src/index.php`,
-  from: `opensupports_version = '${OLD_VERSION}';`,
-  to: `opensupports_version = '${NEW_VERSION}';`
+  from: `version: '${OLD_VERSION}',`,
+  to: `version: '${NEW_VERSION}',`
 });
 replace({
   files: `${WORKDIR}/server/**/*.php`,

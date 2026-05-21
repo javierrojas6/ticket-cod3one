@@ -5,52 +5,51 @@ import safeJSON from 'lib-app/safe-json';
 import SessionStore from 'lib-app/session-store';
 
 class ArticlesReducer extends Reducer {
+  getInitialState() {
+    return {
+      retrieved: false,
+      loading: true,
+      errored: false,
+      topics: []
+    };
+  }
 
-    getInitialState() {
-        return {
-            retrieved: false,
-            loading: true,
-            errored: false,
-            topics: []
-        };
-    }
+  getTypeHandlers() {
+    return {
+      GET_ARTICLES_FULFILLED: this.onArticlesRetrieved,
+      GET_ARTICLES_REJECTED: this.onArticlesRejected,
+      INIT_ARTICLES: this.onInitArticles
+    };
+  }
 
-    getTypeHandlers() {
-        return {
-            'GET_ARTICLES_FULFILLED': this.onArticlesRetrieved,
-            'GET_ARTICLES_REJECTED': this.onArticlesRejected,
-            'INIT_ARTICLES': this.onInitArticles
-        };
-    }
+  onArticlesRetrieved(state, payload) {
+    SessionStore.setItem('topics', JSON.stringify(payload.data));
 
-    onArticlesRetrieved(state, payload) {
-        SessionStore.setItem('topics', JSON.stringify(payload.data));
+    return _.extend({}, state, {
+      retrieved: true,
+      loading: false,
+      errored: false,
+      topics: payload.data
+    });
+  }
 
-        return _.extend({}, state, {
-            retrieved: true,
-            loading: false,
-            errored: false,
-            topics: payload.data
-        });
-    }
+  onArticlesRejected(state) {
+    return _.extend({}, state, {
+      retrieved: true,
+      loading: false,
+      errored: true
+    });
+  }
 
-    onArticlesRejected(state) {
-        return _.extend({}, state, {
-            retrieved: true,
-            loading: false,
-            errored: true
-        });
-    }
+  onInitArticles(state) {
+    const topics = safeJSON.parse(SessionStore.getItem('topics'), null);
 
-    onInitArticles(state) {
-        const topics = safeJSON.parse(SessionStore.getItem('topics'), null);
-
-        return _.extend({}, state, {
-            retrieved: !!topics,
-            loading: false,
-            topics: topics || []
-        });
-    }
+    return _.extend({}, state, {
+      retrieved: !!topics,
+      loading: false,
+      topics: topics || []
+    });
+  }
 }
 
 export default ArticlesReducer.getInstance();

@@ -1,48 +1,99 @@
-@import '../../../scss/vars';
+@import "../../../scss/vars";
 
 .admin-panel-staff-widget {
-    background-color: $secondary-blue;
-    position: relative;
-    width: 100%;
-    height: 165px;
+  background: $ui-gradient-surface-strong;
+  border: 1px solid $ui-color-border-strong;
+  border-radius: $ui-radius-2xl;
+  box-shadow: $ui-shadow-xl;
+  position: relative;
+  width: 100%;
+  height: 165px;
+  text-align: center;
+  overflow: hidden;
+  animation: $ui-animation-entrance;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 86px;
+    background: $ui-gradient-accent-strip;
+  }
+
+  &__profile-pic-wrapper {
+    background: $ui-gradient-button-secondary;
+    position: absolute;
+    top: 12px;
+    border: 4px solid $ui-color-surface-strong;
+    border-radius: $ui-radius-xl;
+    width: 92px;
+    height: 92px;
+    overflow: hidden;
     text-align: center;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 1;
 
-    &__profile-pic-wrapper {
-        background-color: white;
-        position: absolute;
-        top: 8px;
-        border: 4px solid $grey;
-        border-radius: 50%;
-        width: 90px;
-        height: 90px;
-        overflow: hidden;
-        text-align: center;
-        left: 50%;
-        transform: translate(-50%, 0);
+    &--brand-fallback {
+      background: linear-gradient(
+        145deg,
+        rgba(255, 250, 248, 0.98),
+        rgba(255, 238, 233, 0.96)
+      );
+      border-color: rgba(255, 255, 255, 0.72);
+      box-shadow:
+        0 14px 28px rgba(2, 8, 23, 0.18),
+        inset 0 0 0 1px rgba(255, 37, 1, 0.08);
     }
+  }
 
-    &__profile-pic {
-        height: 100%;
-        position: absolute;
-        left: 50%;
-        transform: translate(-50%, 0);
-    }
+  &__profile-pic {
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
 
-    &__user-data {
-        position: absolute;
-        background-color: white;
-        bottom: 0;
-        width: 100%;
-        height: 110px;
-        padding-top: 48px;
+    &--brand-fallback {
+      width: 72%;
+      height: 72%;
+      top: 14%;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 16px rgba(255, 37, 1, 0.14));
     }
+  }
 
-    &__name {
-        font-size: $font-size--md;
-    }
+  &__user-data {
+    position: absolute;
+    background: transparent;
+    bottom: 0;
+    width: 100%;
+    height: 110px;
+    padding-top: 48px;
+  }
 
-    &__actions {
-        font-size: $font-size--xs;
-        margin-top: 10px;
+  &__name {
+    font-size: $font-size--md;
+    color: $ui-color-text-primary;
+    font-weight: 600;
+  }
+
+  &__actions {
+    font-size: $font-size--xs;
+    margin-top: 10px;
+    color: $ui-color-text-secondary;
+  }
+
+  &__action {
+    color: $ui-color-text-secondary;
+
+    &:hover,
+    &:focus {
+      color: $ui-color-text-primary;
+      text-decoration: none;
     }
+  }
+
+  &__action-separator {
+    color: $ui-color-border-strong;
+  }
 }

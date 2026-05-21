@@ -1,0 +1,72 @@
+.auth-brand {
+  width: min(100%, 340px);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  text-align: left;
+
+  &__logo {
+    width: 76px;
+    height: 76px;
+    flex: 0 0 auto;
+    object-fit: contain;
+  }
+
+  &__copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    min-width: 0;
+  }
+
+  &__title {
+    font-family: $ui-font-family-display;
+    font-size: 34px;
+    line-height: 0.94;
+    letter-spacing: 0.04em;
+    color: $ui-color-text-primary;
+    text-transform: uppercase;
+  }
+
+  &__title-accent {
+    color: $ui-color-accent-primary;
+  }
+
+  &__subtitle {
+    margin-top: 6px;
+    font-size: $ui-font-size-label;
+    line-height: 1.4;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: $ui-color-text-soft;
+  }
+
+  @media screen and (max-width: 640px) {
+    gap: 12px;
+
+    &__logo {
+      width: 64px;
+      height: 64px;
+    }
+
+    &__title {
+      font-size: 28px;
+    }
+
+    &__subtitle {
+      letter-spacing: 0.16em;
+    }
+  }
+
+  @media screen and (max-width: 420px) {
+    flex-direction: column;
+    text-align: center;
+
+    &__copy {
+      align-items: center;
+    }
+  }
+}

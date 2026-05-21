@@ -1,13 +1,17 @@
 .admin-panel-layout {
-    padding: 0 10px;
+  padding: 0 6px;
 
-    &__header {
-        margin-bottom: 20px;
-    }
+  &__header {
+    margin-bottom: 22px;
 
-    @media screen and (max-width: 415px) {
-        .admin-panel-layout__content__widget {
-            padding: 20px 5px;
-        }
+    > [class*="col-"] {
+      margin-bottom: 16px;
     }
+  }
+
+  @media screen and (max-width: 415px) {
+    .admin-panel-layout__content__widget {
+      padding: 20px 12px;
+    }
+  }
 }

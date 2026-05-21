@@ -1,68 +1,64 @@
 @import "../scss/vars";
 
 .input {
-    display: block;
+  display: block;
+  max-width: 100%;
+
+  &__text {
+    @include ui-control-base();
+    width: 100%;
+
+    &::placeholder {
+      color: $ui-color-text-placeholder;
+    }
+  }
+
+  &_auto {
     max-width: 100%;
+  }
 
-    &__text {
-        border: 1px solid $grey;
-        border-radius: 3px;
-        padding: 8px;
-        width: 100%;
+  &_small {
+    width: 200px;
+  }
 
-        &:hover {
-            border-color: $medium-grey;
-        }
+  &_medium {
+    width: 250px;
+  }
 
-        &:focus {
-            outline: none;
-            border-color: $primary-blue;
-        }
+  &_large {
+    width: 350px;
+  }
+
+  &_with-icon {
+    position: relative;
+
+    .input__icon {
+      position: absolute;
+      inset: 1px auto 1px 1px;
+      width: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom-left-radius: 13px;
+      border-top-left-radius: 13px;
+      background: $ui-color-surface-elevated;
+      color: $ui-color-text-primary;
     }
 
-    &_auto {
-        max-width: 100%;
+    .input__text {
+      padding-left: 48px;
     }
+  }
 
-    &_small {
-        width: 200px;
+  &_errored {
+    .input__text {
+      border: 1px solid $ui-color-border-danger;
     }
+  }
 
-    &_medium {
-        width: 250px;
+  &_icon-clickable {
+    .input__icon {
+      cursor: pointer;
     }
-
-    &_large {
-        width: 350px;
-    }
-
-    &_with-icon {
-        position: relative;
-
-        .input__icon {
-            position: absolute;
-            margin: 1px;
-            padding: 8px 12px;
-            border-bottom-left-radius: 3px;
-            border-top-left-radius: 3px;
-            background-color: $light-grey;
-        }
-
-        .input__text {
-            padding-left: 48px;
-        }
-    }
-
-    &_errored {
-        .input__text {
-            border: 1px solid $primary-red;
-        }
-    }
-
-    &_icon-clickable {
-
-        .input__icon {
-            cursor: pointer;
-        }
-    }
+  }
 }
