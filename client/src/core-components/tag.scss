@@ -1,39 +1,44 @@
-@import '../scss/vars';
+@import "../scss/vars";
 
-.tag{
-  color: white;
+.tag {
+  color: $ui-color-text-primary;
   display: inline-block;
-  border-radius: 3px;
+  border-radius: $ui-radius-pill;
   margin-left: 5px;
-  margin-top: 3px;
-  padding: 3px;
-  font-size: 13px;
+  margin-top: 6px;
+  padding: $ui-space-inset-pill;
+  font-size: $ui-font-size-caption;
   cursor: default;
+  box-shadow: $ui-shadow-sm;
+  border: 1px solid $ui-color-border-strong;
 
   &__remove {
     cursor: pointer;
     margin-left: 10px;
 
     &:hover {
-      color: $light-grey;
+      color: $ui-color-text-primary;
     }
   }
 
   &__edit {
     cursor: pointer;
     &:hover {
-      color: $light-grey;
+      color: $ui-color-text-primary;
     }
   }
 
   &_small {
-    font-size: 11px;
+    font-size: $ui-font-size-caption;
+    padding: 4px 8px;
   }
 
   &_large {
     width: 220px;
     display: flex;
     justify-content: space-between;
-    padding: 3px 8px;
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: $ui-radius-lg;
   }
 }

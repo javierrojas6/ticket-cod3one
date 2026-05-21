@@ -1,31 +1,30 @@
 @import "../scss/vars";
 
 .info-tooltip {
-    display: inline-block;
+  display: inline-block;
 
-    &__text {
+  &__text {
+    &-title {
+      color: $ui-color-text-accent;
+      font-size: $font-size--md;
+      font-weight: 600;
+    }
+  }
 
-        &-title {
-            color: $secondary-blue;
-            font-size: $font-size--md;
-        }
+  &__icon {
+    color: $ui-color-text-accent;
+    font-size: $font-size--sm;
+  }
+
+  &_warning {
+    .info-tooltip__icon {
+      color: $ui-color-error-icon;
     }
 
-    &__icon {
-        color: $secondary-blue;
-        font-size: $font-size--sm;
+    .info-tooltip__text {
+      &-title {
+        color: $ui-color-error-icon;
+      }
     }
-
-    &_warning {
-
-        .info-tooltip__icon {
-            color: $primary-red;
-        }
-
-        .info-tooltip__text {
-            &-title {
-                color: $primary-red;
-            }
-        }
-    }
+  }
 }

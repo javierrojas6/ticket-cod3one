@@ -74,8 +74,6 @@ echo ""
 echo "1/5 Building frontend..."
 pushd "$CLIENT_DIR" >/dev/null
 npm run build
-rm -f "$FRONT_BUILD_DIR/index.html"
-cp "$CLIENT_DIR/src/index.php" "$FRONT_BUILD_DIR/index.php"
 popd >/dev/null
 
 echo "2/5 Preparing deployment staging..."
@@ -93,7 +91,7 @@ echo "4/5 Uploading files..."
 rsync -avz --checksum --delete \
     --exclude="config.php" \
     --exclude="config.php.bak" \
-    --exclude="api/files/*" \
+    --exclude="api/files/*" --exclude="config.js" \
     "$STAGING_DIR/" "$DEPLOY_TARGET/"
 
 echo "5/5 Fixing permissions..."
@@ -105,5 +103,3 @@ fi
 
 echo ""
 echo "Deployment finished: $DEPLOY_TARGET"
-SCRIPT
-chmod +x /app/cod3one/support/deploy.sh

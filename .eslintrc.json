@@ -1,0 +1,170 @@
+{
+  "ignorePatterns": ["node_modules", "coverage", "dist", "e2e"],
+  "env": {
+    "es2021": true,
+    "node": true
+  },
+  "rules": {},
+  "overrides": [
+    {
+      "files": ["*.ts", "*.js"],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module",
+        "project": "./tsconfig.json"
+      },
+      "plugins": [
+        "@typescript-eslint",
+        "@stylistic/eslint-plugin-js",
+        "prettier",
+        "eslint-comments",
+        "promise",
+        "@angular-eslint"
+      ],
+      "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "plugin:eslint-comments/recommended",
+        "plugin:promise/recommended",
+        "prettier"
+      ],
+      "rules": {
+        "semi": ["warn", "always"],
+        "quotes": ["warn", "single", { "avoidEscape": true }],
+        "complexity": ["error", 5],
+        "curly": ["error", "all"],
+        "no-restricted-syntax": ["error", "LabeledStatement", "WithStatement"],
+        "no-implicit-coercion": ["error"],
+        "no-new-wrappers": ["error"],
+        "no-new-object": ["error"],
+        "new-cap": ["error", { "newIsCap": false, "capIsNew": false }],
+        "no-array-constructor": ["error"],
+        "require-await": ["error"],
+        "max-params": ["error", 4],
+        "max-statements": ["error", 20],
+        "one-var": ["error", "never"],
+        "max-nested-callbacks": ["error", 2],
+        "max-lines": ["error", { "max": 300, "skipBlankLines": true, "skipComments": true }],
+        "max-lines-per-function": ["error", { "max": 40, "skipBlankLines": true, "skipComments": true }],
+        "max-depth": ["error", 3],
+        "no-negated-condition": "error",
+        "prettier/prettier": "error",
+        "eslint-comments/disable-enable-pair": ["error", { "allowWholeFile": true }],
+        "prefer-destructuring": ["error", { "object": true, "array": false }],
+        "no-magic-numbers": ["error", { "ignore": [0, 1], "ignoreEnums": true, "enforceConst": true }],
+        "max-len": [
+          "error",
+          {
+            "code": 120,
+            "tabWidth": 2,
+            "ignoreTrailingComments": true,
+            "ignoreUrls": true,
+            "ignoreStrings": true,
+            "ignoreTemplateLiterals": true,
+            "ignoreRegExpLiterals": true
+          }
+        ],
+
+        "no-underscore-dangle": 0,
+        "no-shadow": 0,
+        "no-return-assign": 0,
+        "no-param-reassign": 0,
+        "max-classes-per-file": 0,
+        "func-names": 0,
+        "radix": 0,
+        "prefer-spread": 0,
+        "prefer-rest-params": 0,
+        "@typescript-eslint/no-empty-function": 0,
+        "@typescript-eslint/no-throw-literal": 0,
+        "@typescript-eslint/no-var-requires": 0,
+        "@typescript-eslint/camelcase": 0,
+        "@typescript-eslint/no-non-null-assertion": 0,
+        "import/no-cycle": 0,
+        "import/export": 0,
+        "import/first": 0,
+        "import/order": 0,
+        "import/prefer-default-export": 0,
+
+        "@typescript-eslint/no-useless-constructor": 0,
+        "class-methods-use-this": 0,
+        "no-plusplus": 0,
+        "no-console": 0,
+        "prefer-template": 0,
+        "consistent-return": 0,
+        "guard-for-in": 0,
+        "lines-between-class-members": 0,
+        "@typescript-eslint/explicit-function-return-type": "error",
+        "@typescript-eslint/no-explicit-any": "error",
+        "@typescript-eslint/no-use-before-define": 0,
+        "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }],
+        "no-prototype-builtins": 0,
+
+        "@angular-eslint/no-input-rename": "off",
+        "@angular-eslint/no-output-rename": "off",
+        "@angular-eslint/component-selector": ["off", { "type": "element", "prefix": "abigail", "style": "kebab-case" }],
+
+        "@angular-eslint/component-class-suffix": "error",
+        "@angular-eslint/contextual-lifecycle": "error",
+        "@angular-eslint/directive-class-suffix": "error",
+        "@angular-eslint/directive-selector": [
+          "error",
+          { "type": "attribute", "prefix": "abigail", "style": "camelCase" }
+        ],
+        "@angular-eslint/no-conflicting-lifecycle": "error",
+        "@angular-eslint/no-host-metadata-property": "error",
+        "@angular-eslint/no-inputs-metadata-property": "error",
+        "@angular-eslint/no-output-native": "error",
+        "@angular-eslint/no-output-on-prefix": "error",
+        "@angular-eslint/no-outputs-metadata-property": "error",
+        "@angular-eslint/use-lifecycle-interface": "warn",
+        "@angular-eslint/use-pipe-transform-interface": "error",
+
+        "@typescript-eslint/no-unsafe-assignment": 0,
+        "@typescript-eslint/no-unsafe-member-access": 0,
+        "@typescript-eslint/no-floating-promises": "error",
+        "@typescript-eslint/no-unsafe-call": 0,
+        "@typescript-eslint/naming-convention": 0,
+        "@typescript-eslint/explicit-module-boundary-types": 0,
+        "@typescript-eslint/restrict-template-expressions": 0,
+        "arrow-body-style": 0,
+        "@typescript-eslint/no-shadow": 0,
+        "@typescript-eslint/no-unsafe-return": 0,
+        "prefer-arrow-callback": 0,
+        "@typescript-eslint/lines-between-class-members": 0,
+        "@typescript-eslint/restrict-plus-operands": 0,
+        "@typescript-eslint/ban-types": 0,
+        "@typescript-eslint/dot-notation": 0,
+        "@typescript-eslint/no-unnecessary-type-assertion": 0
+      }
+    },
+    {
+      "files": ["*.component.ts"],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "ecmaVersion": 2020,
+        "sourceType": "module"
+      },
+      "plugins": ["@angular-eslint/template"],
+      "processor": "@angular-eslint/template/extract-inline-html"
+    },
+    {
+      "files": ["*.html"],
+      "parser": "@angular-eslint/template-parser",
+      "plugins": ["@angular-eslint/template"],
+      "rules": {
+        "@angular-eslint/template/banana-in-box": "error",
+        "@angular-eslint/template/no-negated-async": "error"
+      }
+    },
+    {
+      "files": ["*.spec.ts"],
+      "rules": {
+        "max-lines": ["error", { "max": 1200, "skipBlankLines": true, "skipComments": true }],
+        "no-useless-concat": 0,
+        "@typescript-eslint/unbound-method": 0
+      }
+    }
+  ]
+}

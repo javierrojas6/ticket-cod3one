@@ -10,12 +10,12 @@ import searchFiltersReducer from 'reducers/search-filters-reducer';
 import loginFormReducer from 'reducers/login-form-reducer';
 
 export default combineReducers({
-    session: sessionReducer,
-    config: configReducer,
-    loginForm: loginFormReducer,
-    modal: modalReducer,
-    articles: articlesReducer,
-    adminData: adminDataReducer,
-    routing: routerReducer,
-    searchFilters: searchFiltersReducer,
+  session: sessionReducer,
+  config: configReducer,
+  loginForm: loginFormReducer,
+  modal: modalReducer,
+  articles: articlesReducer,
+  adminData: adminDataReducer,
+  routing: routerReducer,
+  searchFilters: searchFiltersReducer
 });

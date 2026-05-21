@@ -1,5 +1,5 @@
 export default {
-    login: stub(),
-    logout: stub(),
-    checkSession: stub()
+  login: stub(),
+  logout: stub(),
+  checkSession: stub()
 };

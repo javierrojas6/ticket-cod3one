@@ -1,17 +1,24 @@
-@import '../scss/vars';
+@import "../scss/vars";
 
 .header {
-    margin-bottom: 30px;
-    text-align: left;
+  margin-bottom: 28px;
+  text-align: left;
 
-    &__title {
-        margin: 5px 0 14px;
-        font-size: 24px;
-    }
+  &__title {
+    margin: 4px 0 10px;
+    font-family: $ui-font-family-display;
+    font-size: $ui-font-size-display;
+    line-height: 1;
+    letter-spacing: 0.04em;
+    color: $ui-color-text-primary;
+    font-weight: 700;
+  }
 
-    &__description {
-        font-size: 13px;
-        color: $dark-grey;
-        font-family: "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial, sans-serif;
-    }
+  &__description {
+    max-width: 720px;
+    font-size: $ui-font-size-body;
+    line-height: 1.65;
+    color: $ui-color-text-soft;
+    font-family: $ui-font-family-system;
+  }
 }

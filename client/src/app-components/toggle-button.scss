@@ -1,17 +1,18 @@
 @import "../scss/vars";
 
 .toggle-button {
-    background-color: $light-grey;
-    width: 80px;
-    padding: 2px;
-    border-radius: 4px;
-    text-align: center;
-    user-select: none;
-    cursor: pointer;
+  background-color: $ui-color-surface-soft;
+  border: 1px solid $ui-color-border-soft;
+  width: 80px;
+  padding: 2px;
+  border-radius: $ui-radius-sm;
+  text-align: center;
+  user-select: none;
+  cursor: pointer;
 
-    &_disabled {
-        cursor: default;
-        background-color: transparent;
-        color: $dark-grey;
-    }
+  &_disabled {
+    cursor: default;
+    background-color: transparent;
+    color: $ui-color-text-soft;
+  }
 }

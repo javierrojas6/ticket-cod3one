@@ -1,59 +1,52 @@
 @import "../../scss/vars";
 
 .install-step-2 {
+  &__refresh {
+    margin: 15px 0;
 
-    &__refresh {
-        margin: 15px 0;
-
-        &-button {
-            min-width: 120px;
-            width: auto;
-            position: relative;
-            text-align: right;
-        }
-
-        &-icon {
-            position: absolute;
-            left: 8px;
-            top: 8px;
-        }
+    &-button {
+      min-width: 120px;
+      width: auto;
+      position: relative;
+      text-align: right;
     }
 
-    &__requirement-list {
-        margin-bottom: 20px;
+    &-icon {
+      position: absolute;
+      left: 8px;
+      top: 8px;
+    }
+  }
+
+  &__requirement-list {
+    margin-bottom: 20px;
+  }
+
+  &__requirement {
+    color: $ui-color-info-icon;
+
+    &-assert {
+      color: $ui-color-success-icon;
+      float: left;
+      margin-right: 11px;
+      margin-top: 3px;
     }
 
-    &__requirement {
-        color: $secondary-blue;
+    &_error {
+      color: $ui-color-error-icon;
+      background-color: $ui-color-error-surface !important;
 
-        &-assert {
-            color: $primary-green;
-            float: left;
-            margin-right: 11px;
-            margin-top: 3px;
-        }
-
-        &_error {
-            color: $secondary-red;
-            background-color: #ffdfe0 !important;
-
-            .install-step-2__requirement-assert {
-                color: $secondary-red;
-            }
-        }
+      .install-step-2__requirement-assert {
+        color: $ui-color-error-icon;
+      }
     }
+  }
 
-    &__previous {
-    }
-
-    &__buttons {
-        width: 55%;
-        display: inline-flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    &__next {
-    }
+  &__buttons {
+    width: 55%;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 }

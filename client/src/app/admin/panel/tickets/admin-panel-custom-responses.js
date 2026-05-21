@@ -1,6 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
-import {connect}  from 'react-redux';
+import { connect } from 'react-redux';
 
 import i18n from 'lib-app/i18n';
 import API from 'lib-app/api-call';
@@ -21,274 +21,296 @@ import SubmitButton from 'core-components/submit-button';
 import TextEditor from 'core-components/text-editor';
 
 class AdminPanelCustomResponses extends React.Component {
-    static defaultProps = {
-        items: [],
+  static defaultProps = {
+    items: []
+  };
+
+  state = {
+    formClicked: false,
+    showForm: false,
+    formLoading: false,
+    selectedIndex: -1,
+    errors: {},
+    error: '',
+    originalForm: {
+      title: '',
+      content: TextEditor.createEmpty(),
+      language: this.props.language
+    },
+    form: {
+      title: '',
+      content: TextEditor.createEmpty(),
+      language: this.props.language
+    },
+    showErrorMessage: true
+  };
+
+  componentDidMount() {
+    if (!this.props.loaded) {
+      this.retrieveCustomResponses();
+    }
+  }
+
+  render() {
+    return (
+      <div className="admin-panel-custom-responses">
+        <Header title={i18n('CUSTOM_RESPONSES')} description={i18n('CUSTOM_RESPONSES_DESCRIPTION')} />
+        {this.props.loaded ? this.renderContent() : this.renderLoading()}
+      </div>
+    );
+  }
+
+  renderContent() {
+    return (
+      <div className="row">
+        <div className="col-md-3">
+          <Listing {...this.getListingProps()} />
+        </div>
+        {this.state.showForm ? this.renderForm() : null}
+      </div>
+    );
+  }
+
+  renderLoading() {
+    return (
+      <div className="admin-panel-custom-responses__loading">
+        <Loading backgrounded size="large" />
+      </div>
+    );
+  }
+
+  renderForm() {
+    return (
+      <div className="col-md-9">
+        <Form {...this.getFormProps()}>
+          <div className="row">
+            <div className="col-md-7">
+              <FormField
+                label={i18n('TITLE')}
+                name="title"
+                validation="TITLE"
+                required
+                fieldProps={{ size: 'large' }}
+              />
+            </div>
+            <div className="col-md-5">
+              <FormField
+                label={i18n('LANGUAGE')}
+                name="language"
+                field="input"
+                decorator={LanguageSelector}
+                fieldProps={{ size: 'medium' }}
+              />
+            </div>
+          </div>
+          <FormField label={i18n('CONTENT')} name="content" validation="TEXT_AREA" required field="textarea" />
+          <div className="admin-panel-custom-responses__actions">
+            {this.state.selectedIndex !== -1 ? this.renderOptionalButtons() : null}
+            <div className="admin-panel-custom-responses__save-button">
+              <SubmitButton type="secondary" size="small">
+                {i18n('SAVE')}
+              </SubmitButton>
+            </div>
+          </div>
+          {this.state.error ? this.renderErrorMessage() : null}
+        </Form>
+      </div>
+    );
+  }
+  renderErrorMessage() {
+    const { showErrorMessage, error } = this.state;
+
+    return (
+      <Message
+        showMessage={showErrorMessage}
+        onCloseMessage={this.onCloseMessage.bind(this, 'showErrorMessage')}
+        className="admin-panel-custom-responses__message"
+        type="error">
+        {i18n(error)}
+      </Message>
+    );
+  }
+  renderOptionalButtons() {
+    return (
+      <div className="admin-panel-custom-responses__optional-buttons">
+        <div className="admin-panel-custom-responses__delete-button">
+          <Button onClick={this.onDeleteClick.bind(this)}>{i18n('DELETE')}</Button>
+        </div>
+        <div className="admin-panel-custom-responses__discard-button">
+          {this.isEdited() ? (
+            <Button onClick={this.onDiscardChangesClick.bind(this)}>{i18n('DISCARD_CHANGES')}</Button>
+          ) : null}
+        </div>
+      </div>
+    );
+  }
+
+  getListingProps() {
+    return {
+      title: i18n('CUSTOM_RESPONSES'),
+      items: this.getItems(),
+      selectedIndex: this.state.selectedIndex,
+      enableAddNew: true,
+      onChange: this.onItemChange.bind(this),
+      onAddClick: this.onItemChange.bind(this, -1)
     };
+  }
 
-    state = {
-        formClicked: false,
-        showForm: false,
-        formLoading: false,
-        selectedIndex: -1,
-        errors: {},
-        error:'',
-        originalForm: {
-            title: '',
-            content: TextEditor.createEmpty(),
-            language: this.props.language
-        },
-        form: {
-            title: '',
-            content: TextEditor.createEmpty(),
-            language: this.props.language
-        },
-        showErrorMessage: true
+  getFormProps() {
+    const { form, errors, formLoading } = this.state;
+
+    return {
+      values: form,
+      errors,
+      loading: formLoading,
+      onClick: () => this.setState({ formClicked: true }),
+      onChange: (form) => this.setState({ form }),
+      onValidateErrors: (errors) => {
+        this.setState({ errors });
+      },
+      onSubmit: this.onFormSubmit.bind(this)
     };
+  }
 
-    componentDidMount() {
-        if (!this.props.loaded) {
-            this.retrieveCustomResponses();
-        }
-    }
-
-    render() {
-        return (
-            <div className="admin-panel-custom-responses">
-                <Header title={i18n('CUSTOM_RESPONSES')} description={i18n('CUSTOM_RESPONSES_DESCRIPTION')} />
-                {(this.props.loaded) ? this.renderContent() : this.renderLoading()}
-            </div>
-        );
-    }
-
-    renderContent() {
-        return (
-            <div className="row">
-                <div className="col-md-3">
-                    <Listing {...this.getListingProps()} />
-                </div>
-                {this.state.showForm ?  this.renderForm() : null}
-            </div>
-        );
-    }
-
-    renderLoading() {
-        return (
-            <div className="admin-panel-custom-responses__loading">
-                <Loading backgrounded size="large" />
-            </div>
-        );
-    }
-
-    renderForm() {
-        return (
-            <div className="col-md-9">
-                <Form {...this.getFormProps()}>
-                    <div className="row">
-                        <div className="col-md-7">
-                            <FormField label={i18n('TITLE')} name="title" validation="TITLE" required fieldProps={{size: 'large'}} />
-                        </div>
-                        <div className="col-md-5">
-                            <FormField label={i18n('LANGUAGE')} name="language" field="input" decorator={LanguageSelector} fieldProps={{size: 'medium'}} />
-                        </div>
-                    </div>
-                         <FormField label={i18n('CONTENT')} name="content" validation="TEXT_AREA" required field="textarea" />
-                    <div className="admin-panel-custom-responses__actions">
-                        {(this.state.selectedIndex !== -1) ? this.renderOptionalButtons() : null}
-                        <div className="admin-panel-custom-responses__save-button">
-                            <SubmitButton type="secondary" size="small">{i18n('SAVE')}</SubmitButton>
-                        </div>
-                    </div>
-                    {this.state.error ? this.renderErrorMessage() : null}
-                </Form>
-            </div>
-        );
-    }
-    renderErrorMessage() {
-        const { showErrorMessage, error } = this.state;
-
-        return(
-            <Message
-                showMessage={showErrorMessage}
-                onCloseMessage={this.onCloseMessage.bind(this, "showErrorMessage")}
-                className="admin-panel-custom-responses__message"
-                type="error">
-                    {i18n(error)}
-            </Message>
+  getItems() {
+    return this.props.items.map((item) => {
+      return {
+        content: (
+          <span>
+            {item.name}
+            <span className="admin-panel-custom-responses__item-flag">
+              <Icon name={item.language != 'en' ? item.language : 'us'} />
+            </span>
+          </span>
         )
-    }
-    renderOptionalButtons() {
-        return (
-            <div className="admin-panel-custom-responses__optional-buttons">
-                <div className="admin-panel-custom-responses__delete-button">
-                    <Button onClick={this.onDeleteClick.bind(this)}>{i18n('DELETE')}</Button>
-                </div>
-                <div className="admin-panel-custom-responses__discard-button">
-                    {this.isEdited() ? <Button onClick={this.onDiscardChangesClick.bind(this)}>{i18n('DISCARD_CHANGES')}</Button> : null}
-                </div>
-            </div>
-        );
-    }
+      };
+    });
+  }
 
-    getListingProps() {
-        return {
-            title: i18n('CUSTOM_RESPONSES'),
-            items: this.getItems(),
-            selectedIndex: this.state.selectedIndex,
-            enableAddNew: true,
-            onChange: this.onItemChange.bind(this),
-            onAddClick: this.onItemChange.bind(this, -1)
-        };
+  onItemChange(index) {
+    if (this.isEdited()) {
+      AreYouSure.openModal(i18n('WILL_LOSE_CHANGES'), this.updateForm.bind(this, index));
+    } else {
+      this.updateForm(index);
     }
+  }
 
-    getFormProps() {
-        const { form, errors, formLoading } = this.state;
+  onFormSubmit(form) {
+    const { items, allowedLanguages } = this.props;
+    const { selectedIndex } = this.state;
 
-        return {
-            values: form,
-            errors,
-            loading: formLoading,
-            onClick: () => this.setState({formClicked: true}),
-            onChange: (form) => this.setState({form}),
-            onValidateErrors: (errors) => {this.setState({errors})},
-            onSubmit: this.onFormSubmit.bind(this)
+    this.setState({ formLoading: true });
+
+    if (selectedIndex !== -1) {
+      API.call({
+        path: '/ticket/edit-custom-response',
+        data: {
+          id: items[selectedIndex].id,
+          name: form.title,
+          content: form.content,
+          language: _.includes(allowedLanguages, form.language) ? form.language : allowedLanguages[0]
         }
-    }
-
-    getItems() {
-        return this.props.items.map((item) => {
-            return {
-                content: (
-                    <span>
-                        {item.name}
-                        <span className="admin-panel-custom-responses__item-flag">
-                            <Icon name={(item.language != 'en') ? item.language : 'us'} />
-                        </span>
-                    </span>
-                )
-            };
-        });
-    }
-
-    onItemChange(index) {
-        if(this.isEdited()) {
-            AreYouSure.openModal(i18n('WILL_LOSE_CHANGES'), this.updateForm.bind(this, index));
-        } else {
-            this.updateForm(index);
+      })
+        .then(() => {
+          this.setState({ formLoading: false, originalForm: form });
+          this.retrieveCustomResponses();
+        })
+        .catch(this.onItemChange.bind(this, -1));
+    } else {
+      this.setState({ form, originalForm: form });
+      API.call({
+        path: '/ticket/add-custom-response',
+        data: {
+          name: form.title,
+          content: form.content,
+          language: _.includes(allowedLanguages, form.language) ? form.language : allowedLanguages[0]
         }
-    }
-
-    onFormSubmit(form) {
-        const {items, allowedLanguages} = this.props;
-        const { selectedIndex } = this.state;
-
-        this.setState({formLoading: true});
-
-        if(selectedIndex !== -1) {
-            API.call({
-                path: '/ticket/edit-custom-response',
-                data: {
-                    id: items[selectedIndex].id,
-                    name: form.title,
-                    content: form.content,
-                    language: _.includes(allowedLanguages, form.language) ? form.language : allowedLanguages[0]
-                }
-            }).then(() => {
-                this.setState({formLoading: false, originalForm: form});
-                this.retrieveCustomResponses();
-            }).catch(this.onItemChange.bind(this, -1));
-        } else {
-            this.setState({form, originalForm: form});
-            API.call({
-                path: '/ticket/add-custom-response',
-                data: {
-                    name: form.title,
-                    content: form.content,
-                    language: _.includes(allowedLanguages, form.language) ? form.language : allowedLanguages[0]
-                }
-            }).then(() => {
-                this.setState({error: ''});
-                this.retrieveCustomResponses();
-                this.onItemChange(-1);
-            }).catch((e) => {
-                this.onItemChange.bind(this, -1)
-                this.setState({error: e.message, formLoading:false, showErrorMessage: true});
-            });
-        }
-    }
-
-    onDiscardChangesClick(event) {
-        event.preventDefault();
-        this.onItemChange(this.state.selectedIndex);
-    }
-
-    onDeleteClick(event) {
-        event.preventDefault();
-        AreYouSure.openModal(i18n('WILL_DELETE_CUSTOM_RESPONSE'), this.deleteCustomResponse.bind(this));
-    }
-
-    deleteCustomResponse() {
-        this.updateForm(this.state.selectedIndex)
-
-        return API.call({
-            path: '/ticket/delete-custom-response',
-            data: {
-                id: this.props.items[this.state.selectedIndex].id
-            }
-        }).then(() => {
-            this.retrieveCustomResponses();
-            this.onItemChange(-1);
+      })
+        .then(() => {
+          this.setState({ error: '' });
+          this.retrieveCustomResponses();
+          this.onItemChange(-1);
+        })
+        .catch((e) => {
+          this.onItemChange.bind(this, -1);
+          this.setState({ error: e.message, formLoading: false, showErrorMessage: true });
         });
     }
+  }
 
-    updateForm(index) {
-        const { items, language } = this.props;
-        const item = items[index];
+  onDiscardChangesClick(event) {
+    event.preventDefault();
+    this.onItemChange(this.state.selectedIndex);
+  }
 
-        let form = _.clone(this.state.form);
+  onDeleteClick(event) {
+    event.preventDefault();
+    AreYouSure.openModal(i18n('WILL_DELETE_CUSTOM_RESPONSE'), this.deleteCustomResponse.bind(this));
+  }
 
-        form.title = (item && item.name) || '';
-        form.content = TextEditor.getEditorStateFromHTML((item && item.content) || '');
-        form.language = (item && item.language) || language;
+  deleteCustomResponse() {
+    this.updateForm(this.state.selectedIndex);
 
-        this.setState({
-            formClicked: false,
-            showForm: true,
-            selectedIndex: index,
-            formLoading: false,
-            originalForm: form,
-            form,
-            errors: {}
-        });
-    }
+    return API.call({
+      path: '/ticket/delete-custom-response',
+      data: {
+        id: this.props.items[this.state.selectedIndex].id
+      }
+    }).then(() => {
+      this.retrieveCustomResponses();
+      this.onItemChange(-1);
+    });
+  }
 
-    retrieveCustomResponses() {
-        this.props.dispatch(AdminDataActions.retrieveCustomResponses());
-    }
+  updateForm(index) {
+    const { items, language } = this.props;
+    const item = items[index];
 
-    isEdited() {
-        const { form, formClicked, originalForm } = this.state;
+    let form = _.clone(this.state.form);
 
-        return (
-            form.title && formClicked && (
-                form.title != originalForm.title ||
-                form.content != originalForm.content ||
-                form.language != originalForm.language
-            )
-        );
-    }
+    form.title = (item && item.name) || '';
+    form.content = TextEditor.getEditorStateFromHTML((item && item.content) || '');
+    form.language = (item && item.language) || language;
 
-    onCloseMessage(showMessage) {
-        this.setState({
-            [showMessage]: false
-        });
-    }
+    this.setState({
+      formClicked: false,
+      showForm: true,
+      selectedIndex: index,
+      formLoading: false,
+      originalForm: form,
+      form,
+      errors: {}
+    });
+  }
+
+  retrieveCustomResponses() {
+    this.props.dispatch(AdminDataActions.retrieveCustomResponses());
+  }
+
+  isEdited() {
+    const { form, formClicked, originalForm } = this.state;
+
+    return (
+      form.title &&
+      formClicked &&
+      (form.title != originalForm.title ||
+        form.content != originalForm.content ||
+        form.language != originalForm.language)
+    );
+  }
+
+  onCloseMessage(showMessage) {
+    this.setState({
+      [showMessage]: false
+    });
+  }
 }
 
 export default connect((store) => {
-    return {
-        allowedLanguages: store.config.allowedLanguages,
-        language: store.config.language,
-        loaded: store.adminData.customResponsesLoaded,
-        items: store.adminData.customResponses
-    };
+  return {
+    allowedLanguages: store.config.allowedLanguages,
+    language: store.config.language,
+    loaded: store.adminData.customResponsesLoaded,
+    items: store.adminData.customResponses
+  };
 })(AdminPanelCustomResponses);

@@ -1,63 +1,66 @@
 @import "../scss/vars";
 
 .are-you-sure {
-    width: 800px;
-    text-align: left;
+  width: 800px;
+  text-align: left;
+  background: $ui-color-surface-base;
+  border-radius: $ui-radius-lg;
+  box-shadow: $ui-shadow-lg;
 
-    &__header {
-        background-color: $secondary-blue;
-        border-top-right-radius: 4px;
-        border-top-left-radius: 4px;
-        color: white;
-        font-size: $font-size--lg;
-        font-weight: bold;
-        margin-bottom: 10px;
-        padding: 10px;
-    }
+  &__header {
+    background: $ui-gradient-button-primary;
+    border-top-right-radius: $ui-radius-lg;
+    border-top-left-radius: $ui-radius-lg;
+    color: $ui-color-text-inverse;
+    font-size: $font-size--lg;
+    font-weight: bold;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
 
-    &__description {
-        color: $dark-grey;
-        font-size: $font-size--md;
-        padding: 14px 5% 0;
-    }
+  &__description {
+    color: $ui-color-text-secondary;
+    font-size: $font-size--md;
+    padding: 14px 5% 0;
+  }
 
-    &__buttons {
-        margin-top: 10px;
-        padding-bottom: 10px;
-        width: 100%;
-        display: inline-flex;
-        flex-direction: row;
-        justify-content: flex-end;
-        align-items: center;
-    }
+  &__buttons {
+    margin-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+  }
 
-    &__yes-button,
-    &__no-button {
-        display: block;
-        margin-right: 10px;
-    }
+  &__yes-button,
+  &__no-button {
+    display: block;
+    margin-right: 10px;
+  }
 
-    &__password {
-        margin: 0 auto;
-        margin-top: 20px;
-    }
+  &__password {
+    margin: 0 auto;
+    margin-top: 20px;
+  }
 
-    &__close-icon {
-        cursor: pointer;
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        color: white;
-    }
+  &__close-icon {
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: $ui-color-text-inverse;
+  }
 
-    .separator {
-        width: 90%;
-        margin: 30px auto;
-    }
+  .separator {
+    width: 90%;
+    margin: 30px auto;
+  }
 }
 
 @media screen and (max-width: 800px) {
-    .are-you-sure {
-        width: auto;
-    }
+  .are-you-sure {
+    width: auto;
+  }
 }

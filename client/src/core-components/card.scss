@@ -1,44 +1,58 @@
 @import "../scss/vars";
 
 .card {
-    border-radius: 4px;
-    color: white;
-    height: 260px;
-    padding: 15px;
-    position: relative;
+  border-radius: $ui-radius-sm;
+  color: $ui-color-text-primary;
+  min-height: 260px;
+  padding: 15px;
+  position: relative;
+  box-shadow: $ui-shadow-md;
+  display: flex;
+  flex-direction: column;
 
-    &__title {
-        font-variant: small-caps;
-        margin: 10px 0;
-        font-size: $font-size--lg;
-    }
+  &__icon {
+    min-height: 72px;
+    display: flex;
+    align-items: flex-start;
+    line-height: 1;
 
-    &__description {
-        font-size: $font-size--sm;
+    .fa {
+      display: block;
+      line-height: 1;
     }
+  }
 
-    &__button {
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 17px;
-    }
+  &__title {
+    font-variant: small-caps;
+    margin: 10px 0;
+    font-size: $font-size--lg;
+  }
 
-    @media (max-width: 1060px) {
-        .button {
-            width: 80%;
-        }
-    }
+  &__description {
+    font-size: $font-size--sm;
+    flex: 1 1 auto;
+  }
 
-    &_red {
-        background-color: $primary-red;
-    }
+  &__button {
+    margin-top: auto;
+    padding-top: 17px;
+  }
 
-    &_blue {
-        background-color: $secondary-blue;
+  @media (max-width: 1060px) {
+    .button {
+      width: 80%;
     }
+  }
 
-    &_green {
-        background-color: $primary-green;
-    }
+  &_red {
+    background: $ui-gradient-button-primary;
+  }
+
+  &_blue {
+    background: $ui-gradient-button-tertiary;
+  }
+
+  &_green {
+    background: $ui-gradient-button-secondary;
+  }
 }

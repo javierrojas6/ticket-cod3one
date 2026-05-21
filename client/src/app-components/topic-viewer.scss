@@ -1,85 +1,84 @@
 @import "../scss/vars";
 
 .topic-viewer {
-    text-align: left;
-    margin: 35px 0;
+  text-align: left;
+  margin: 35px 0;
 
-    &__header {
-        cursor: default;
-        margin-bottom: 20px;
-        font-size: $font-size--bg;
+  &__header {
+    cursor: default;
+    margin-bottom: 20px;
+    font-size: $font-size--bg;
 
-        &:hover {
-            .topic-viewer__edit-icon {
-                display: inline-block;
-            }
+    &:hover {
+      .topic-viewer__edit-icon {
+        display: inline-block;
+      }
+    }
+  }
+
+  &__icon {
+    color: $ui-color-success-icon;
+  }
+
+  &__title {
+    font-size: $font-size--md;
+    margin-left: 15px;
+  }
+
+  &__private {
+    margin-left: 10px;
+  }
+
+  &__edit-icon {
+    color: $ui-color-text-soft;
+    cursor: pointer;
+    margin-left: 10px;
+    display: none;
+  }
+
+  &__list {
+    &-item {
+      display: inline-block;
+      width: 50%;
+      color: $ui-color-text-accent;
+      margin-bottom: 10px;
+      user-select: none;
+
+      &-hidden {
+        opacity: 0;
+      }
+
+      &:hover {
+        .topic-viewer__grab-icon {
+          display: inline-block;
+          left: 0;
         }
+      }
+
+      &-button {
+        user-select: none;
+      }
     }
 
-    &__icon {
-        color: $primary-green;
+    &-item:before {
+      content: "• ";
+      color: $ui-color-text-soft;
     }
 
-    &__title {
-        font-size: $font-size--md;
-        margin-left: 15px;
+    &-item-button {
+      display: inline-block;
+      color: $ui-color-text-accent;
     }
+  }
 
-    &__private {
-        margin-left: 10px;
-    }
+  &__grab-icon {
+    color: $ui-color-text-soft;
+    cursor: move;
+    margin-left: 10px;
+    display: none;
+  }
 
-    &__edit-icon {
-        color: $grey;
-        cursor: pointer;
-        margin-left: 10px;
-        display: none;
-    }
-
-    &__list {
-
-        &-item {
-            display: inline-block;
-            width: 50%;
-            color: $secondary-blue;
-            margin-bottom: 10px;
-            user-select: none;
-
-            &-hidden {
-                opacity: 0;
-            }
-
-            &:hover {
-                .topic-viewer__grab-icon {
-                    display: inline-block;
-                    left: 0;
-                }
-            }
-
-            &-button {
-                user-select: none;
-            }
-        }
-
-        &-item:before {
-            content: "• ";
-            color: $grey;
-        }
-
-        &-item-button {
-            display: inline-block;
-            color: $secondary-blue;
-        }
-    }
-
-    &__grab-icon {
-        color: $grey;
-        cursor: move;
-        margin-left: 10px;
-        display: none;
-    }
-
-    &__add-item {
-        color: $dark-grey;
-    }
+  &__add-item {
+    color: $ui-color-text-secondary;
+  }
 }

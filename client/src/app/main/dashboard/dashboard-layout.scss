@@ -1,9 +1,29 @@
 .dashboard {
-    @media screen and (min-width: 993px){
-        display: flex;
+  @media screen and (min-width: 993px) {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  &__menu {
+    margin-bottom: 16px;
+
+    @media screen and (min-width: 993px) {
+      flex: 0 0 220px;
+      max-width: 220px;
+      padding-left: 0;
+    }
+  }
+
+  &__content {
+    @media screen and (min-width: 993px) {
+      flex: 1 1 auto;
+      max-width: none;
+      padding-left: 0;
     }
 
-    &__menu {
-        margin-bottom: 10px;
+    .widget {
+      min-height: 420px;
     }
+  }
 }

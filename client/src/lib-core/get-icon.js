@@ -1,14 +1,12 @@
-import React   from 'react';
-import _       from 'lodash';
+import React from 'react';
+import _ from 'lodash';
 
 export default function () {
-    let className = 'fa';
+  let className = 'fa';
 
-    _.each(arguments, (arg) => {
-        className += ' fa-' + arg;
-    });
+  _.each(arguments, (arg) => {
+    className += ' fa-' + arg;
+  });
 
-    return (
-        <i className={className} />
-    );
-};
+  return <i className={className} />;
+}

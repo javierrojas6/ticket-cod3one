@@ -1,88 +1,89 @@
 @import "../scss/vars";
 
 .people-list {
-    max-width: 800px;
-    margin: 0 auto;
+  max-width: 800px;
+  margin: 0 auto;
 
-    &__list {
+  &__item {
+    border: 1px solid $ui-color-border-soft;
+    border-radius: $ui-radius-md;
+    background: $ui-color-surface-soft;
+    margin-bottom: 12px;
+    position: relative;
+    height: 105px;
+    padding-left: 95px;
+    font-size: $font-size--md;
+    color: $ui-color-text-secondary;
+
+    &-profile-pic-wrapper {
+      vertical-align: top;
+      background: $ui-gradient-button-primary;
+      color: $ui-color-text-inverse;
+      border-radius: $ui-radius-sm;
+      width: 60px;
+      height: 60px;
+      top: 20px;
+      left: 20px;
+
+      overflow: hidden;
+      position: absolute;
+      border: 2px solid $ui-color-border-soft;
+
+      &--brand-fallback {
+        background: linear-gradient(
+          145deg,
+          rgba(255, 249, 247, 0.98),
+          rgba(255, 236, 231, 0.96)
+        );
+        border-color: rgba(255, 255, 255, 0.42);
+        box-shadow: inset 0 0 0 1px rgba(255, 37, 1, 0.08);
+      }
     }
 
-    &__item {
-        border: 2px solid $grey;
-        border-radius: 4px;
-        margin-bottom: 12px;
-        position: relative;
-        height: 105px;
-        padding-left: 95px;
-        font-size: $font-size--md;
+    &-profile-pic {
+      position: absolute;
+      height: 100%;
+      left: 50%;
+      transform: translate(-50%, 0);
+
+      &--brand-fallback {
+        width: 72%;
+        height: 72%;
+        top: 14%;
+        object-fit: contain;
+        filter: drop-shadow(0 6px 12px rgba(255, 37, 1, 0.14));
+      }
+    }
+
+    &-block {
+      padding: 30px 0;
+      width: 25%;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+
+  @media screen and (max-width: 415px) {
+    .people-list {
+      &__item {
+        height: unset;
+        padding: unset;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
 
         &-profile-pic-wrapper {
-            vertical-align: top;
-            background-color: $secondary-blue;
-            color: white;
-            border-radius: 5px;
-            width: 60px;
-            height: 60px;
-            top: 20px;
-            left: 20px;
-
-            overflow: hidden;
-            position: absolute;
-            border: 2px solid $light-grey;
-        }
-
-        &-profile-pic {
-            position: absolute;
-            height: 100%;
-            left: 50%;
-            transform: translate(-50%, 0)
+          top: 15px;
+          left: 15px;
         }
 
         &-block {
-            padding: 30px 0;
-            width: 25%;
-            display: inline-block;
-            vertical-align: middle;
+          width: unset;
+          display: unset;
+          padding: 15px 10px 0 0;
         }
-
-        &-assigned-tickets {
-
-        }
-
-        &-closed-tickets {
-
-        }
-
-        &-last-login {
-
-        }
+      }
     }
-
-    &__pagination {
-
-    }
-
-    @media screen and (max-width: 415px) {
-        .people-list {
-            &__item {
-                height: unset;
-                padding: unset;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: flex-end;
-
-                &-profile-pic-wrapper {
-                    top: 15px;
-                    left: 15px;
-                }
-
-                &-block {
-                    width: unset;
-                    display: unset;
-                    padding: 15px 10px 0 0;
-                }
-            }
-        }
-    }
+  }
 }

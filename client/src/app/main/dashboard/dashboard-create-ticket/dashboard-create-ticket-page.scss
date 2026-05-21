@@ -1,24 +1,23 @@
 .dashboard-create-ticket-page {
+  &_wrapped {
+    padding: 0 10px;
 
-    &_wrapped {
-        padding: 0 10px;
-
-        @media screen and (min-width: 993px){
-            float: none;
-        }
+    @media screen and (min-width: 993px) {
+      float: none;
     }
+  }
 
-    &__container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 
-    &__create-ticket-form__hidden {
-        display: none;
-    }
+  &__create-ticket-form__hidden {
+    display: none;
+  }
 
-    &__message {
-        margin-bottom: 30px;
-    }
+  &__message {
+    margin-bottom: 30px;
+  }
 }

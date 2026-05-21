@@ -1,3 +1,3 @@
 export default {
-    changeLanguage: stub()
+  changeLanguage: stub()
 };
